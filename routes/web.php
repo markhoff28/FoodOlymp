@@ -28,6 +28,7 @@ Route::middleware('admin')->group(function () {
     Route::get('/admin/logout', [AdminController::class, 'AdminLogout'])->name('admin.logout');
     // Admin manage profile data
     Route::get('/admin/profile', [AdminProfilController::class, 'AdminProfile'])->name('admin.profile');
+    Route::post('/admin/profile/store', [AdminProfilController::class, 'AdminProfileStore'])->name('admin.profile.store');
 });
 // End Admin Group Middleware 
 
