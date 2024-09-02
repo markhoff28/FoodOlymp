@@ -260,8 +260,8 @@
   <script src="{{ asset('backend/assets/libs/simplebar/simplebar.min.js') }}"></script>
   <script src="{{ asset('backend/assets/libs/node-waves/waves.min.js') }}"></script>
   <script src="{{ asset('backend/assets/libs/feather-icons/feather.min.js') }}"></script>
-  <!-- pace js -->
-  <script src="{{ asset('backend/assets/libs/pace-js/pace.min.js') }}"></script>
+  <!-- pace js 
+  <script src="{{ asset('backend/assets/libs/pace-js/pace.min.js') }}"></script>-->
   <!-- password addon init -->
   <script src="{{ asset('backend/assets/js/pages/pass-addon.init.js') }}"></script>
 
