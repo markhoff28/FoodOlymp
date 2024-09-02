@@ -10,7 +10,7 @@
 
         <li>
           <a href="{{ route('admin.dashboard') }}">
-            <i data-feather="home"></i>
+          <i class='bx bx-home-alt'></i>
             <span data-key="t-dashboard">Dashboard</span>
           </a>
         </li>

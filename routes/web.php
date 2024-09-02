@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\AdminProfilController;
 use App\Http\Controllers\Admin\AdminRestPasswordController;
 use App\Http\Controllers\AdminController;
 
@@ -25,6 +26,8 @@ require __DIR__ . '/auth.php';
 Route::middleware('admin')->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'AdminDashboard'])->name('admin.dashboard');
     Route::get('/admin/logout', [AdminController::class, 'AdminLogout'])->name('admin.logout');
+    // Admin manage profile data
+    Route::get('/admin/profile', [AdminProfilController::class, 'AdminProfile'])->name('admin.profile');
 });
 // End Admin Group Middleware 
 
