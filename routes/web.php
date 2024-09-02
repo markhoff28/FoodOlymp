@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminProfilController;
 use App\Http\Controllers\Admin\AdminRestPasswordController;
+use App\Http\Controllers\Admin\AdminChangePasswordController;
 use App\Http\Controllers\AdminController;
 
 Route::get('/', function () {
@@ -29,6 +30,9 @@ Route::middleware('admin')->group(function () {
     // Admin manage profile data
     Route::get('/admin/profile', [AdminProfilController::class, 'AdminProfile'])->name('admin.profile');
     Route::post('/admin/profile/store', [AdminProfilController::class, 'AdminProfileStore'])->name('admin.profile.store');
+    // Admin update password
+    Route::get('/admin/change/password', [AdminChangePasswordController::class, 'AdminChangePassword'])->name('admin.change.password');
+    Route::post('/admin/password/update', [AdminChangePasswordController::class, 'AdminPasswordUpdate'])->name('admin.password.update');
 });
 // End Admin Group Middleware 
 
