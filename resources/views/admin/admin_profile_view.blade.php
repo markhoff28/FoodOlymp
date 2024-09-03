@@ -13,7 +13,7 @@
 
           <div class="page-title-right">
             <ol class="breadcrumb m-0">
-              <li class="breadcrumb-item"><a href="javascript: void(0);">Contacts</a></li>
+              <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}"><i class="bx bx-home-alt"></i></a></li>
               <li class="breadcrumb-item active">Profile</li>
             </ol>
           </div>
