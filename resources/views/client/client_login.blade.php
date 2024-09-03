@@ -4,7 +4,7 @@
 <head>
 
   <meta charset="utf-8" />
-  <title>Admin Login </title>
+  <title>Client Login </title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
   <meta content="Themesbrand" name="author" />
@@ -35,13 +35,13 @@
               <div class="d-flex flex-column h-100">
                 <div class="mb-4 mb-md-5 text-center">
                   <a href="index.html" class="d-block auth-logo">
-                    <img src="{{ asset('backend/assets/images/logo-sm.svg') }}" alt="" height="28"> <span class="logo-txt">Admin Login</span>
+                    <img src="{{ asset('backend/assets/images/logo-sm.svg') }}" alt="" height="28"> <span class="logo-txt">Client Login</span>
                   </a>
                 </div>
                 <div class="auth-content my-auto">
                   <div class="text-center">
                     <h5 class="mb-0">Welcome Back !</h5>
-                    <p class="text-muted mt-2">Sign in to continue to Minia.</p>
+                    <p class="text-muted mt-2">Sign in to continue to Client.</p>
                   </div>
 
                   @if ($errors->any())
@@ -128,7 +128,7 @@
                 <div class="mt-4 mt-md-5 text-center">
                   <p class="mb-0">© <script>
                       document.write(new Date().getFullYear())
-                    </script> FoodOlymp . Crafted with <i class="mdi mdi-heart text-danger"></i> <a href="https://thetriumvirat.com/">TheTriumvirat</a></p>
+                    </script> EasyLearing . Crafted with <i class="mdi mdi-heart text-danger"></i> by EasyLearing</p>
                 </div>
               </div>
             </div>
@@ -260,8 +260,8 @@
   <script src="{{ asset('backend/assets/libs/simplebar/simplebar.min.js') }}"></script>
   <script src="{{ asset('backend/assets/libs/node-waves/waves.min.js') }}"></script>
   <script src="{{ asset('backend/assets/libs/feather-icons/feather.min.js') }}"></script>
-  <!-- pace js 
-  <script src="{{ asset('backend/assets/libs/pace-js/pace.min.js') }}"></script>-->
+  <!-- pace js -->
+  <script src="{{ asset('backend/assets/libs/pace-js/pace.min.js') }}"></script>
   <!-- password addon init -->
   <script src="{{ asset('backend/assets/js/pages/pass-addon.init.js') }}"></script>
 

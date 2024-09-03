@@ -4,7 +4,7 @@
 <head>
 
   <meta charset="utf-8" />
-  <title>Admin Login </title>
+  <title>Client Register </title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
   <meta content="Themesbrand" name="author" />
@@ -35,13 +35,13 @@
               <div class="d-flex flex-column h-100">
                 <div class="mb-4 mb-md-5 text-center">
                   <a href="index.html" class="d-block auth-logo">
-                    <img src="{{ asset('backend/assets/images/logo-sm.svg') }}" alt="" height="28"> <span class="logo-txt">Admin Login</span>
+                    <img src="{{ asset('backend/assets/images/logo-sm.svg') }}" alt="" height="28"> <span class="logo-txt">Client Register</span>
                   </a>
                 </div>
                 <div class="auth-content my-auto">
                   <div class="text-center">
                     <h5 class="mb-0">Welcome Back !</h5>
-                    <p class="text-muted mt-2">Sign in to continue to Minia.</p>
+                    <p class="text-muted mt-2">Sign in to continue to Client.</p>
                   </div>
 
                   @if ($errors->any())
@@ -56,8 +56,22 @@
                   @if (Session::has('success'))
                   <li>{{ Session::get('success') }}</li>
                   @endif
+
                   <form class="mt-4 pt-2" action="{{ route('admin.login_submit') }}" method="post">
                     @csrf
+
+                    <div class="mb-3">
+                      <label class="form-label">Restaurant Name</label>
+                      <input type="text" name="name" class="form-control" id="name" placeholder="Enter Name">
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">Phone</label>
+                      <input type="text" name="phone" class="form-control" id="phone" placeholder="Enter Phone">
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label">Address</label>
+                      <input type="text" name="address" class="form-control" id="address" placeholder="Enter Address">
+                    </div>
 
                     <div class="mb-3">
                       <label class="form-label">Email</label>
@@ -70,7 +84,7 @@
                         </div>
                         <div class="flex-shrink-0">
                           <div class="">
-                            <a href="{{ route('admin.forget-password') }}" class="text-muted">Forgot password?</a>
+                            <a href="{{ route('admin.forget_password') }}" class="text-muted">Forgot password?</a>
                           </div>
                         </div>
                       </div>
@@ -128,7 +142,7 @@
                 <div class="mt-4 mt-md-5 text-center">
                   <p class="mb-0">© <script>
                       document.write(new Date().getFullYear())
-                    </script> FoodOlymp . Crafted with <i class="mdi mdi-heart text-danger"></i> <a href="https://thetriumvirat.com/">TheTriumvirat</a></p>
+                    </script> EasyLearing . Crafted with <i class="mdi mdi-heart text-danger"></i> by EasyLearing</p>
                 </div>
               </div>
             </div>
@@ -260,8 +274,8 @@
   <script src="{{ asset('backend/assets/libs/simplebar/simplebar.min.js') }}"></script>
   <script src="{{ asset('backend/assets/libs/node-waves/waves.min.js') }}"></script>
   <script src="{{ asset('backend/assets/libs/feather-icons/feather.min.js') }}"></script>
-  <!-- pace js 
-  <script src="{{ asset('backend/assets/libs/pace-js/pace.min.js') }}"></script>-->
+  <!-- pace js -->
+  <script src="{{ asset('backend/assets/libs/pace-js/pace.min.js') }}"></script>
   <!-- password addon init -->
   <script src="{{ asset('backend/assets/js/pages/pass-addon.init.js') }}"></script>
 
