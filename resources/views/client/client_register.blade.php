@@ -57,7 +57,7 @@
                   <li>{{ Session::get('success') }}</li>
                   @endif
 
-                  <form class="mt-4 pt-2" action="{{ route('admin.login_submit') }}" method="post">
+                  <form class="mt-4 pt-2" action="{{ route('client.register.submit') }}" method="post">
                     @csrf
 
                     <div class="mb-3">
@@ -84,7 +84,7 @@
                         </div>
                         <div class="flex-shrink-0">
                           <div class="">
-                            <a href="{{ route('admin.forget_password') }}" class="text-muted">Forgot password?</a>
+                            <a href="{{ route('admin.forget-password') }}" class="text-muted">Forgot password?</a>
                           </div>
                         </div>
                       </div>
@@ -103,7 +103,7 @@
 
                     </div>
                     <div class="mb-3">
-                      <button class="btn btn-primary w-100 waves-effect waves-light" type="submit">Log In</button>
+                      <button class="btn btn-primary w-100 waves-effect waves-light" type="submit">Register</button>
                     </div>
                   </form>
 
@@ -142,7 +142,7 @@
                 <div class="mt-4 mt-md-5 text-center">
                   <p class="mb-0">© <script>
                       document.write(new Date().getFullYear())
-                    </script> EasyLearing . Crafted with <i class="mdi mdi-heart text-danger"></i> by EasyLearing</p>
+                    </script> FoodOlymp . Crafted with <i class="mdi mdi-heart text-danger"></i> <a href="https://thetriumvirat.com/">TheTriumvirat</a></p>
                 </div>
               </div>
             </div>

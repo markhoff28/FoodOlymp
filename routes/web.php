@@ -46,7 +46,13 @@ Route::post('/admin/password-submit', [AdminRestPasswordController::class, 'Admi
 Route::get('/admin/reset-password/{token}/{email}', [AdminRestPasswordController::class, 'AdminResetPassword']);
 Route::post('/admin/reset_password_submit', [AdminRestPasswordController::class, 'AdminResetPasswordSubmit'])->name('admin.reset_password_submit');
 
-/// ALL ROUTE FOR CLIENT 
+// Client Group Group Middleware
+Route::middleware('client')->group(function () {
+    Route::get('/client/dashboard', [ClientController::class, 'ClientDashboard'])->name('client.dashboard');
+});
+// End Client Group Group Middleware
 
 Route::get('/client/login', [ClientController::class, 'ClientLogin'])->name('client.login');
 Route::get('/client/register', [ClientController::class, 'ClientRegister'])->name('client.register');
+Route::post('/client/register/submit', [ClientController::class, 'ClientRegisterSubmit'])->name('client.register.submit');
+Route::post('/client/login_submit', [ClientController::class, 'ClientLoginSubmit'])->name('client.login_submit');
