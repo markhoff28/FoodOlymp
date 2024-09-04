@@ -7,6 +7,8 @@ use App\Http\Controllers\Admin\AdminRestPasswordController;
 use App\Http\Controllers\Admin\AdminChangePasswordController;
 
 use App\Http\Controllers\Client\ClientProfilController;
+use App\Http\Controllers\Client\ClientChangePasswordController;
+
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ClientController;
 
@@ -55,6 +57,9 @@ Route::middleware('client')->group(function () {
     // Client manage profile data
     Route::get('/client/profile', [ClientProfilController::class, 'ClientProfile'])->name('client.profile');
     Route::post('/client/profile/store', [ClientProfilController::class, 'ClientProfileStore'])->name('client.profile.store');
+    // Client update password
+    Route::get('/client/change/password', [ClientChangePasswordController::class, 'ClientChangePassword'])->name('client.change.password');
+    Route::post('/client/password/update', [ClientChangePasswordController::class, 'ClientPasswordUpdate'])->name('client.password.update');
 });
 // End Client Group Group Middleware
 
