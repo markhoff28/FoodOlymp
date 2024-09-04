@@ -14,6 +14,11 @@ class ClientController extends Controller
         return view('client.client_login');
     } // End Method 
 
+    public function ClientDashboard()
+    {
+        return view('client.client_dashboard');
+    } // End Method
+
     public function ClientRegister()
     {
         return view('client.client_register');
@@ -59,12 +64,12 @@ class ClientController extends Controller
         } else {
             return redirect()->route('client.login')->with('error', 'Invalid Creadentials');
         }
+    } // End Method
+
+    public function ClientLogout()
+    {
+        Auth::guard('client')->logout();
+        return redirect()->route('client.login')->with('success', 'Logout Success');
     }
     // End Method 
-
-    public function ClientDashboard()
-    {
-        return view('client.client_dashboard');
-    }
-    // End Method
 }

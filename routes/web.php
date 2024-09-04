@@ -49,6 +49,7 @@ Route::post('/admin/reset_password_submit', [AdminRestPasswordController::class,
 // Client Group Group Middleware
 Route::middleware('client')->group(function () {
     Route::get('/client/dashboard', [ClientController::class, 'ClientDashboard'])->name('client.dashboard');
+    Route::get('/client/logout', [ClientController::class, 'ClientLogout'])->name('client.logout');
 });
 // End Client Group Group Middleware
 
