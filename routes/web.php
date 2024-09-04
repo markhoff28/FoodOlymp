@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminProfilController;
 use App\Http\Controllers\Admin\AdminRestPasswordController;
 use App\Http\Controllers\Admin\AdminChangePasswordController;
+
+use App\Http\Controllers\Client\ClientProfilController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ClientController;
 
@@ -50,6 +52,9 @@ Route::post('/admin/reset_password_submit', [AdminRestPasswordController::class,
 Route::middleware('client')->group(function () {
     Route::get('/client/dashboard', [ClientController::class, 'ClientDashboard'])->name('client.dashboard');
     Route::get('/client/logout', [ClientController::class, 'ClientLogout'])->name('client.logout');
+    // Client manage profile data
+    Route::get('/client/profile', [ClientProfilController::class, 'ClientProfile'])->name('client.profile');
+    Route::post('/client/profile/store', [ClientProfilController::class, 'ClientProfileStore'])->name('client.profile.store');
 });
 // End Client Group Group Middleware
 
