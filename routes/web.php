@@ -9,12 +9,16 @@ use App\Http\Controllers\Admin\AdminChangePasswordController;
 use App\Http\Controllers\Client\ClientProfilController;
 use App\Http\Controllers\Client\ClientChangePasswordController;
 
+use App\Http\Controllers\Frontend\IndexController;
+
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ClientController;
 
-Route::get('/', function () {
+Route::get('/', [IndexController::class, 'Index'])->name('index');
+
+/*Route::get('/', function () {
     return view('welcome');
-});
+});*/
 
 Route::get('/dashboard', function () {
     return view('dashboard');
