@@ -11,6 +11,7 @@ use App\Http\Controllers\Client\ClientChangePasswordController;
 
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\UserController;
+use App\Http\Controllers\Frontend\User\UserChangePasswordController;
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ClientController;
@@ -28,6 +29,9 @@ Route::get('/dashboard', function () {
 Route::middleware('auth')->group(function () {
     Route::post('/profile/store', [UserController::class, 'ProfileStore'])->name('profile.store');
     Route::get('/user/logout', [UserController::class, 'UserLogout'])->name('user.logout');
+    // Usee update password
+    Route::get('/change/password', [UserChangePasswordController::class, 'ChangePassword'])->name('change.password');
+    Route::post('/user/password/update', [UserChangePasswordController::class, 'UserPasswordUpdate'])->name('user.password.update');
 });
 
 require __DIR__ . '/auth.php';
