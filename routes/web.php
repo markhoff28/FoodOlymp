@@ -6,6 +6,8 @@ use App\Http\Controllers\Admin\AdminProfilController;
 use App\Http\Controllers\Admin\AdminRestPasswordController;
 use App\Http\Controllers\Admin\AdminChangePasswordController;
 
+use App\Http\Controllers\Backend\CategoryController;
+
 use App\Http\Controllers\Client\ClientProfilController;
 use App\Http\Controllers\Client\ClientChangePasswordController;
 
@@ -46,6 +48,11 @@ Route::middleware('admin')->group(function () {
     // Admin update password
     Route::get('/admin/change/password', [AdminChangePasswordController::class, 'AdminChangePassword'])->name('admin.change.password');
     Route::post('/admin/password/update', [AdminChangePasswordController::class, 'AdminPasswordUpdate'])->name('admin.password.update');
+
+    // Category All Route 
+    Route::controller(CategoryController::class)->group(function () {
+        Route::get('/all/category', 'AllCategory')->name('all.category');
+    });
 });
 // End Admin Group Middleware 
 
