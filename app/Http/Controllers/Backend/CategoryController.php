@@ -55,6 +55,7 @@ class CategoryController extends Controller
     public function UpdateCategory(Request $request)
     {
         $cat_id = $request->id;
+        $old_img = $request->old_image;
 
         if ($request->file('image')) {
             $image = $request->file('image');
@@ -63,6 +64,10 @@ class CategoryController extends Controller
             $img = $manager->read($image);
             $img->resize(300, 300)->save(public_path('upload/category/' . $name_gen));
             $save_url = 'upload/category/' . $name_gen;
+
+            if (file_exists($old_img)) {
+                unlink($old_img);
+            }
 
             Category::find($cat_id)->update([
                 'category_name' => $request->category_name,
@@ -86,5 +91,21 @@ class CategoryController extends Controller
 
             return redirect()->route('all.category')->with($notification);
         }
+    } // End Method
+
+    public function DeleteCategory($id)
+    {
+        $item = Category::find($id);
+        $img = $item->category_image;
+        unlink($img);
+
+        Category::find($id)->delete();
+
+        $notification = array(
+            'message' => 'Category Delete Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notification);
     } // End Method
 }

@@ -32,6 +32,7 @@
             <form id="myForm" action="{{ route('update.category') }}" method="post" enctype="multipart/form-data">
               @csrf
               <input type="hidden" name="id" value="{{ $category->id }}">
+              <input type="hidden" name="old_image" value="{{ $category->category_image }}">
               <div class="row">
                 <div class="col-lg-12">
                   <div>
