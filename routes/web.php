@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\AdminRestPasswordController;
 use App\Http\Controllers\Admin\AdminChangePasswordController;
 
 use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\CityController;
 
 use App\Http\Controllers\Client\ClientProfilController;
 use App\Http\Controllers\Client\ClientChangePasswordController;
@@ -57,6 +58,16 @@ Route::middleware('admin')->group(function () {
         Route::get('/edit/category/{id}', 'EditCategory')->name('edit.category');
         Route::post('/update/category', 'UpdateCategory')->name('update.category');
         Route::get('/delete/category/{id}', 'DeleteCategory')->name('delete.category');
+    });
+
+    // City All Route 
+    Route::controller(CityController::class)->group(function(){
+        Route::get('/all/city', 'AllCity')->name('all.city');
+        Route::post('/store/city', 'StoreCity')->name('city.store');
+        Route::post('/store/city', 'StoreCity')->name('city.store');
+        Route::get('/edit/city/{id}', 'EditCity');
+        Route::post('/update/city', 'UpdateCity')->name('city.update');
+        Route::get('/delete/city/{id}', 'DeleteCity')->name('delete.city');
     });
 });
 // End Admin Group Middleware 
