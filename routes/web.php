@@ -12,6 +12,7 @@ use App\Http\Controllers\Backend\CityController;
 use App\Http\Controllers\Client\ClientProfilController;
 use App\Http\Controllers\Client\ClientChangePasswordController;
 use App\Http\Controllers\Client\Backend\MenuController;
+use App\Http\Controllers\Client\Backend\ProductController;
 
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\UserController;
@@ -100,6 +101,15 @@ Route::middleware('client')->group(function () {
         Route::get('/edit/menu/{id}', 'EditMenu')->name('edit.menu');
         Route::post('/update/menu', 'UpdateMenu')->name('menu.update');
         Route::get('/delete/menu/{id}', 'DeleteMenu')->name('delete.menu');
+    });
+
+    Route::controller(ProductController::class)->group(function(){
+        Route::get('/all/product', 'AllProduct')->name('all.product');
+        Route::get('/add/product', 'AddProduct')->name('add.product');
+        Route::post('/store/product', 'StoreProduct')->name('product.store');
+        Route::get('/edit/product/{id}', 'EditMenu')->name('edit.product');
+        Route::post('/update/product', 'UpdateProduct')->name('product.product');
+        Route::get('/delete/product/{id}', 'DeleteMenu')->name('delete.product');
     });
 });
 // End Client Group Group Middleware

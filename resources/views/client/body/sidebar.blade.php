@@ -10,14 +10,14 @@
 
         <li>
           <a href="{{ route('client.dashboard') }}">
-            <i data-feather="home"></i>
+            <i class='bx bx-home-alt'></i>
             <span data-key="t-dashboard">Dashboard</span>
           </a>
         </li>
 
         <li>
           <a href="javascript: void(0);" class="has-arrow">
-            <i data-feather="grid"></i>
+            <i class='bx bx-food-menu'></i>
             <span data-key="t-apps">Menu</span>
           </a>
           <ul class="sub-menu" aria-expanded="false">
@@ -30,6 +30,27 @@
             <li>
               <a href="{{ route('add.menu') }}">
                 <span data-key="t-chat">Add Menu</span>
+              </a>
+            </li>
+
+          </ul>
+        </li>
+
+        <li>
+          <a href="javascript: void(0);" class="has-arrow">
+            <i class="bx bx-dish"></i>
+            <span data-key="t-apps">Product</span>
+          </a>
+          <ul class="sub-menu" aria-expanded="false">
+            <li>
+              <a href="{{ route('all.product') }}">
+                <span data-key="t-calendar">All Product</span>
+              </a>
+            </li>
+
+            <li>
+              <a href="{{ route('add.product') }}">
+                <span data-key="t-chat">Add Product</span>
               </a>
             </li>
 
