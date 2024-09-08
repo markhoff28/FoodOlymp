@@ -11,6 +11,7 @@ use App\Http\Controllers\Backend\CityController;
 
 use App\Http\Controllers\Client\ClientProfilController;
 use App\Http\Controllers\Client\ClientChangePasswordController;
+use App\Http\Controllers\Client\Backend\MenuController;
 
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\UserController;
@@ -61,7 +62,7 @@ Route::middleware('admin')->group(function () {
     });
 
     // City All Route 
-    Route::controller(CityController::class)->group(function(){
+    Route::controller(CityController::class)->group(function () {
         Route::get('/all/city', 'AllCity')->name('all.city');
         Route::post('/store/city', 'StoreCity')->name('city.store');
         Route::post('/store/city', 'StoreCity')->name('city.store');
@@ -91,6 +92,15 @@ Route::middleware('client')->group(function () {
     // Client update password
     Route::get('/client/change/password', [ClientChangePasswordController::class, 'ClientChangePassword'])->name('client.change.password');
     Route::post('/client/password/update', [ClientChangePasswordController::class, 'ClientPasswordUpdate'])->name('client.password.update');
+
+    Route::controller(MenuController::class)->group(function () {
+        Route::get('/all/menu', 'AllMenu')->name('all.menu');
+        Route::get('/add/category', 'AddCategory')->name('add.category');
+        Route::post('/store/city', 'StoreCity')->name('city.store');
+        Route::get('/edit/city/{id}', 'EditCity');
+        Route::post('/update/city', 'UpdateCity')->name('city.update');
+        Route::get('/delete/city/{id}', 'DeleteCity')->name('delete.city');
+    });
 });
 // End Client Group Group Middleware
 
