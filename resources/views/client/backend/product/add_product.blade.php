@@ -129,8 +129,8 @@
                 </div>
 
                 <div class="form-check mt-2">
-                  <input class="form-check-input" name="most_populer" type="checkbox" id="formCheck2" value="1">
-                  <label class="form-check-label" for="formCheck2">
+                  <input class="form-check-input" name="most_populer" type="checkbox" id="formCheck3" value="1">
+                  <label class="form-check-label" for="formCheck3">
                     Most Populer
                   </label>
                 </div>
