@@ -17,7 +17,7 @@
 
         <li>
           <a href="javascript: void(0);" class="has-arrow">
-            <i class='bx bx-food-menu'></i>
+            <i class='bx bx-category'></i>
             <span data-key="t-apps">Menu</span>
           </a>
           <ul class="sub-menu" aria-expanded="false">
@@ -38,8 +38,8 @@
 
         <li>
           <a href="javascript: void(0);" class="has-arrow">
-            <i class="bx bx-dish"></i>
-            <span data-key="t-apps">Product</span>
+            <i class='bx bx-food-menu'></i>
+            <span data-key="t-apps">Menu Product</span>
           </a>
           <ul class="sub-menu" aria-expanded="false">
             <li>
