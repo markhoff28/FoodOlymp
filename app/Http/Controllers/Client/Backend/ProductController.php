@@ -31,7 +31,7 @@ class ProductController extends Controller
     } // End Method
 
     public function StoreProduct(Request $request) {
-        $pcode = IdGenerator::generate(['table' => 'products','field' => 'code', 'length' => 5, 'prefix' => 'PC']);  
+        $pcode = IdGenerator::generate(['table' => 'products','field' => 'code', 'length' => 5, 'prefix' => 'FO']);  
 
         if ($request->file('image')) {
             $image = $request->file('image');
