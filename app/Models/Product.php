@@ -9,4 +9,9 @@ class Product extends Model
 {
     use HasFactory;
     protected $guarded = [];
+
+    // Find the menu
+    public function menu(){
+        return $this->belongsTo(Menu::class, 'menu_id','id');
+    }
 }
