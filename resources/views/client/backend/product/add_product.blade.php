@@ -143,16 +143,6 @@
             </form>
           </div>
         </div>
-
-
-
-
-
-
-
-
-
-
         <!-- end tab content -->
       </div>
       <!-- end col -->
@@ -190,6 +180,12 @@
         menu_id: {
           required: true,
         },
+        category_id: {
+          required: true,
+        },
+        city_id: {
+          required: true,
+        },
 
       },
       messages: {
@@ -202,7 +198,12 @@
         menu_id: {
           required: 'Please Select One Menu',
         },
-
+        category_id: {
+          required: 'Please Select One Category',
+        },
+        city_id: {
+          required: 'Please Select One City',
+        },
 
       },
       errorElement: 'span',
