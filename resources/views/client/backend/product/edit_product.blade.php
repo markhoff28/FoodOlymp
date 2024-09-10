@@ -28,15 +28,18 @@
         <div class="card">
           <div class="card-body p-4">
 
-            <form id="myForm" action="{{ route('product.store') }}" method="post" enctype="multipart/form-data">
+            <form id="myForm" action="{{ route('product.update') }}" method="post" enctype="multipart/form-data">
               @csrf
+
+              <input type="hidden" name="id" value="{{ $product->id }}" >
+              <input type="hidden" name="old_image" value="{{ $product->image }}">
 
               <div class="row">
                 <div class="col-xl-4 col-md-6">
                   <div class="form-group mb-3">
                     <label for="example-text-input" class="form-label">Category Name</label>
                     <select name="category_id" class="form-select">
-                      <option>Select</option>
+                      <option selected="" disabled="">Select</option>
                       @foreach ($category as $cat)
                       <option value="{{ $cat->id }}" {{ $cat->id == $product->category_id ? 'selected' : '' }}>{{ $cat->category_name }}</option>
                       @endforeach
@@ -62,7 +65,7 @@
                   <div class="form-group mb-3">
                     <label for="example-text-input" class="form-label">City Name</label>
                     <select name="city_id" class="form-select">
-                      <option>Select</option>
+                      <option selected="" disabled="">Select</option>
                       @foreach ($city as $cit)
                       <option value="{{ $cit->id }}" {{ $cit->id == $product->city_id ? 'selected' : '' }}>{{ $cit->city_name }}</option>
                       @endforeach
@@ -142,16 +145,6 @@
             </form>
           </div>
         </div>
-
-
-
-
-
-
-
-
-
-
         <!-- end tab content -->
       </div>
       <!-- end col -->
@@ -186,6 +179,12 @@
         menu_id: {
           required: true,
         },
+        category_id: {
+          required: true,
+        },
+        city_id: {
+          required: true,
+        },
 
       },
       messages: {
@@ -194,12 +193,6 @@
         },
         menu_id: {
           required: 'Please Select One Menu',
-        },
-        category_id: {
-          required: true,
-        },
-        city_id: {
-          required: true,
         },
         category_id: {
           required: 'Please Select One Category',

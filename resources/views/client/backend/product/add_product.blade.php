@@ -37,7 +37,7 @@
                   <div class="form-group mb-3">
                     <label for="example-text-input" class="form-label">Category Name</label>
                     <select name="category_id" class="form-select">
-                      <option>Select</option>
+                      <option selected="" disabled="">Select</option>
                       @foreach ($category as $cat)
                       <option value="{{ $cat->id }}">{{ $cat->category_name }}</option>
                       @endforeach
@@ -63,7 +63,7 @@
                   <div class="form-group mb-3">
                     <label for="example-text-input" class="form-label">City Name</label>
                     <select name="city_id" class="form-select">
-                      <option>Select</option>
+                      <option selected="" disabled="">Select</option>
                       @foreach ($city as $cit)
                       <option value="{{ $cit->id }}">{{ $cit->city_name }}</option>
                       @endforeach
