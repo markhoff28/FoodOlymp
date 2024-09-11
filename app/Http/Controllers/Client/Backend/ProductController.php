@@ -138,8 +138,7 @@ class ProductController extends Controller
 
             return redirect()->route('all.product')->with($notification);
         }
-    }
-    // End Method 
+    } // End Method 
 
     public function DeleteProduct($id)
     {
@@ -155,6 +154,13 @@ class ProductController extends Controller
         );
 
         return redirect()->back()->with($notification);
-    }
-    // End Method
+    } // End Method
+
+    public function ChangeStatus(Request $request)
+    {
+        $product = Product::find($request->product_id);
+        $product->status = $request->status;
+        $product->save();
+        return response()->json(['success' => 'Status Change Successfully']);
+    } // End Method
 }

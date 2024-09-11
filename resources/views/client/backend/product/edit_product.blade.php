@@ -13,7 +13,8 @@
 
           <div class="page-title-right">
             <ol class="breadcrumb m-0">
-              <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li>
+              <li class="breadcrumb-item"><a href="{{ route('client.dashboard') }}">Dashboard</a></li>
+              <li class="breadcrumb-item"><a href="{{ route('all.product') }}">All Product</a></li>
               <li class="breadcrumb-item active">Edit Product </li>
             </ol>
           </div>
@@ -31,7 +32,7 @@
             <form id="myForm" action="{{ route('product.update') }}" method="post" enctype="multipart/form-data">
               @csrf
 
-              <input type="hidden" name="id" value="{{ $product->id }}" >
+              <input type="hidden" name="id" value="{{ $product->id }}">
               <input type="hidden" name="old_image" value="{{ $product->image }}">
 
               <div class="row">
