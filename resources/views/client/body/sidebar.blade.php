@@ -53,7 +53,26 @@
                 <span data-key="t-chat">Add Product</span>
               </a>
             </li>
+          </ul>
+        </li>
 
+        <li>
+          <a href="javascript: void(0);" class="has-arrow">
+            <i class='bx bx-image'></i>
+            <span data-key="t-apps">Gallery</span>
+          </a>
+          <ul class="sub-menu" aria-expanded="false">
+            <li>
+              <a href="{{ route('all.gallery') }}">
+                <span data-key="t-calendar">All Gallery</span>
+              </a>
+            </li>
+
+            <li>
+              <a href="{{ route('add.gallery') }}">
+                <span data-key="t-chat">Add Gallery</span>
+              </a>
+            </li>
           </ul>
         </li>
 
