@@ -23,6 +23,9 @@ return new class extends Migration
             $table->string('address')->nullable();
             $table->string('role')->default('client');
             $table->string('status')->default('1');
+            $table->integer('city_id');
+            $table->text('shop_info')->nullable();
+            $table->string('cover_photo')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
