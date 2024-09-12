@@ -11,6 +11,7 @@ use App\Http\Controllers\Backend\CityController;
 
 use App\Http\Controllers\Client\ClientProfilController;
 use App\Http\Controllers\Client\ClientChangePasswordController;
+use App\Http\Controllers\Client\Backend\CouponController;
 use App\Http\Controllers\Client\Backend\GalleryController;
 use App\Http\Controllers\Client\Backend\MenuController;
 use App\Http\Controllers\Client\Backend\ProductController;
@@ -124,6 +125,13 @@ Route::middleware('client')->group(function () {
         Route::get('/edit/gallery/{id}', 'EditGallery')->name('edit.gallery');
         Route::post('/update/gallery', 'UpdateGallery')->name('gallery.update');
         Route::get('/delete/gallery/{id}', 'DeleteGallery')->name('delete.gallery');
+    });
+
+    // Coupon All Route 
+    Route::controller(CouponController::class)->group(function () {
+        Route::get('/all/coupon', 'AllCoupon')->name('all.coupon');
+        Route::get('/add/coupon', 'AddCoupon')->name('add.coupon');
+        Route::post('/store/coupon', 'StoreCoupon')->name('coupon.store');
     });
 });
 // End Client Group Group Middleware
