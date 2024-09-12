@@ -9,13 +9,12 @@
     <div class="row">
       <div class="col-12">
         <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-          <h4 class="mb-sm-0 font-size-18">Add Coupon</h4>
+          <h4 class="mb-sm-0 font-size-18">Edit Coupon</h4>
 
           <div class="page-title-right">
             <ol class="breadcrumb m-0">
               <li class="breadcrumb-item"><a href="{{ route('client.dashboard') }}">Dashboard</a></li>
               <li class="breadcrumb-item"><a href="{{ route('all.coupon') }}">All Coupon</a></li>
-              <li class="breadcrumb-item active">Add Coupon </li>
             </ol>
           </div>
 
@@ -29,15 +28,17 @@
         <div class="card">
           <div class="card-body p-4">
 
-            <form id="myForm" action="{{ route('coupon.store') }}" method="post" enctype="multipart/form-data">
+            <form id="myForm" action="{{ route('coupon.update') }}" method="post" enctype="multipart/form-data">
               @csrf
+
+              <input type="hidden" name="id" value="{{ $coupon->id }}">
 
               <div class="row">
 
                 <div class="col-xl-6 col-md-6">
                   <div class="form-group mb-3">
                     <label for="example-text-input" class="form-label">Coupon Name</label>
-                    <input class="form-control" type="text" name="coupon_name" id="example-text-input">
+                    <input class="form-control" type="text" name="coupon_name" id="example-text-input" value="{{ $coupon->coupon_name }}">
                   </div>
                 </div>
 
@@ -45,27 +46,29 @@
                 <div class="col-xl-6 col-md-6">
                   <div class="form-group mb-3">
                     <label for="example-text-input" class="form-label">Coupon Dsc </label>
-                    <input class="form-control" type="text" name="coupon_desc" id="example-text-input">
+                    <input class="form-control" type="text" name="coupon_desc" id="example-text-input" value="{{ $coupon->coupon_desc }}">
                   </div>
                 </div>
 
                 <div class="col-xl-6 col-md-6">
                   <div class="form-group mb-3">
                     <label for="example-text-input" class="form-label">Coupon Discount </label>
-                    <input class="form-control" type="text" name="discount" id="example-text-input">
+                    <input class="form-control" type="text" name="discount" id="example-text-input" value="{{ $coupon->discount }}">
                   </div>
                 </div>
 
                 <div class="col-xl-6 col-md-6">
                   <div class="form-group mb-3">
                     <label for="example-text-input" class="form-label">Coupon Validity </label>
-                    <input class="form-control" type="date" name="validity" id="example-text-input" min="{{ Carbon\Carbon::now()->format('Y-m-d') }}">
+                    <input class="form-control" type="date" name="validity" id="example-text-input" min="{{ Carbon\Carbon::now()->format('Y-m-d') }}" value="{{ $coupon->validity }}">
                   </div>
                 </div>
+
 
                 <div class="mt-4">
                   <button type="submit" class="btn btn-primary waves-effect waves-light">Save Changes</button>
                 </div>
+
               </div>
             </form>
           </div>
@@ -73,16 +76,10 @@
         <!-- end tab content -->
       </div>
       <!-- end col -->
-
-
-      <!-- end col -->
     </div>
     <!-- end row -->
-
   </div> <!-- container-fluid -->
 </div>
-
-
 
 <script type="text/javascript">
   $(document).ready(function() {
