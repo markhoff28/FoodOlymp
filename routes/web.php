@@ -78,6 +78,7 @@ Route::middleware('admin')->group(function () {
     // Product All Route 
     Route::controller(AdminProductController::class)->group(function () {
         Route::get('/admin/all/product', 'AdminAllProduct')->name('admin.all.product');
+        Route::get('/admin/add/product', 'AdminAddProduct')->name('admin.add.product');
     });
 });
 // End Admin Group Middleware 
