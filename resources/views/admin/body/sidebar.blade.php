@@ -32,7 +32,26 @@
                 <span data-key="t-chat">Add Category</span>
               </a>
             </li>
+          </ul>
+        </li>
 
+        <li>
+          <a href="javascript: void(0);" class="has-arrow">
+            <i class="bx bx-category"></i>
+            <span data-key="t-apps">Manage Product</span>
+          </a>
+          <ul class="sub-menu" aria-expanded="false">
+            <li>
+              <a href="{{ route('admin.all.product') }}">
+                <span data-key="t-calendar">All Product</span>
+              </a>
+            </li>
+
+            <li>
+              <a href="{{ route('add.category') }}">
+                <span data-key="t-chat">Add Product</span>
+              </a>
+            </li>
           </ul>
         </li>
 

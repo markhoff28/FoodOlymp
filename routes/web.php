@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminProfilController;
 use App\Http\Controllers\Admin\AdminRestPasswordController;
 use App\Http\Controllers\Admin\AdminChangePasswordController;
+use App\Http\Controllers\Backend\AdminProductController;
 
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\CityController;
@@ -72,6 +73,11 @@ Route::middleware('admin')->group(function () {
         Route::get('/edit/city/{id}', 'EditCity');
         Route::post('/update/city', 'UpdateCity')->name('city.update');
         Route::get('/delete/city/{id}', 'DeleteCity')->name('delete.city');
+    });
+
+    // Product All Route 
+    Route::controller(AdminProductController::class)->group(function () {
+        Route::get('/admin/all/product', 'AdminAllProduct')->name('admin.all.product');
     });
 });
 // End Admin Group Middleware 
