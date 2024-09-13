@@ -27,6 +27,13 @@ class AdminProductController extends Controller
         $menu = Menu::latest()->get();
         $client = Client::latest()->get();
         return view('admin.backend.product.add_product', compact('category', 'city', 'menu', 'client'));
-    }
-    // End Method
+    } // End Method
+
+    public function AdminChangeStatus(Request $request)
+    {
+        $product = Product::find($request->product_id);
+        $product->status = $request->status;
+        $product->save();
+        return response()->json(['success' => 'Status Change Successfully']);
+    } // End Method
 }

@@ -69,7 +69,7 @@
                     @if ($item->status == 1)
                     <span class="text-success"><b>Active</b></span>
                     @else
-                    <span class="text-danger"><b>InActive</b></span>
+                    <span class="text-danger"><b>Inactive</b></span>
                     @endif
                   </td>
 
@@ -77,6 +77,7 @@
                     <a href="{{ route('edit.product',$item->id) }}" class="btn btn-info waves-effect waves-light"> <i class="fas fa-edit"></i> </a>
                     <a href="{{ route('delete.product',$item->id) }}" class="btn btn-danger waves-effect waves-light" id="delete"><i class="fas fa-trash"></i></a>
                     <input data-id="{{$item->id}}" class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Active" data-off="Inactive" {{ $item->status ? 'checked' : '' }}>
+
                   </td>
                 </tr>
                 @endforeach

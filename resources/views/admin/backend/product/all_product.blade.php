@@ -102,7 +102,7 @@
       $.ajax({
         type: "GET",
         dataType: "json",
-        url: '/changeStatus',
+        url: '/adminChangeStatus',
         data: {
           'status': status,
           'product_id': product_id
