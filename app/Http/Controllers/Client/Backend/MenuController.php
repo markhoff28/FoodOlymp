@@ -13,7 +13,8 @@ class MenuController extends Controller
 {
     public function AllMenu()
     {
-        $menu = Menu::latest()->get();
+        $id = Auth::guard('client')->id();
+        $menu = Menu::where('client_id', $id)->orderBy('id', 'desc')->get();
         return view('client.backend.menu.all_menu', compact('menu'));
     } // End Method
 
@@ -34,6 +35,7 @@ class MenuController extends Controller
 
             Menu::create([
                 'menu_name' => $request->menu_name,
+                'client_id' => Auth::guard('client')->id(),
                 'menu_image' => $save_url,
             ]);
         }

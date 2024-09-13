@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             
             $table->string('menu_name');
+            $table->integer('client_id');
             $table->string('menu_image')->nullable();
             $table->timestamps();
         });
