@@ -79,6 +79,8 @@ Route::middleware('admin')->group(function () {
     Route::controller(AdminProductController::class)->group(function () {
         Route::get('/admin/all/product', 'AdminAllProduct')->name('admin.all.product');
         Route::get('/admin/add/product', 'AdminAddProduct')->name('admin.add.product');
+        Route::post('/admin/store/product', 'AdminStoreProduct')->name('admin.product.store');
+        Route::get('/admin/edit/product/{id}', 'AdminEditProduct')->name('admin.edit.product');
         Route::get('/adminChangeStatus', 'AdminChangeStatus');
     });
 });
