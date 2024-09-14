@@ -5,10 +5,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminProfilController;
 use App\Http\Controllers\Admin\AdminRestPasswordController;
 use App\Http\Controllers\Admin\AdminChangePasswordController;
-use App\Http\Controllers\Backend\AdminProductController;
 
+use App\Http\Controllers\Backend\AdminProductController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\CityController;
+use App\Http\Controllers\Backend\RestaurantController;
 
 use App\Http\Controllers\Client\ClientProfilController;
 use App\Http\Controllers\Client\ClientChangePasswordController;
@@ -84,6 +85,13 @@ Route::middleware('admin')->group(function () {
         Route::post('/admin/update/product', 'AdminUpdateProduct')->name('admin.product.update');
         Route::get('/admin/delete/product/{id}', 'AdminDeleteProduct')->name('admin.delete.product');
         Route::get('/adminChangeStatus', 'AdminChangeStatus');
+    });
+
+    // Restaurant All Route
+    Route::controller(RestaurantController::class)->group(function () {
+        Route::get('/pending/restaurant', 'PendingRestaurant')->name('pending.restaurant');
+        Route::get('/clientChangeStatus', 'ClientChangeStatus');
+        Route::get('/approve/restaurant', 'ApproveRestaurant')->name('approve.restaurant');
     });
 });
 // End Admin Group Middleware 
