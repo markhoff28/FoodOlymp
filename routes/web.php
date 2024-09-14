@@ -81,6 +81,8 @@ Route::middleware('admin')->group(function () {
         Route::get('/admin/add/product', 'AdminAddProduct')->name('admin.add.product');
         Route::post('/admin/store/product', 'AdminStoreProduct')->name('admin.product.store');
         Route::get('/admin/edit/product/{id}', 'AdminEditProduct')->name('admin.edit.product');
+        Route::post('/admin/update/product', 'AdminUpdateProduct')->name('admin.product.update');
+        Route::get('/admin/delete/product/{id}', 'AdminDeleteProduct')->name('admin.delete.product');
         Route::get('/adminChangeStatus', 'AdminChangeStatus');
     });
 });
