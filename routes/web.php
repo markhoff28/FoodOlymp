@@ -106,7 +106,7 @@ Route::get('/admin/reset-password/{token}/{email}', [AdminRestPasswordController
 Route::post('/admin/reset_password_submit', [AdminRestPasswordController::class, 'AdminResetPasswordSubmit'])->name('admin.reset_password_submit');
 
 // Client Group Group Middleware
-Route::middleware('client')->group(function () {
+Route::middleware('client', 'status')->group(function () {
     Route::get('/client/dashboard', [ClientController::class, 'ClientDashboard'])->name('client.dashboard');
     Route::get('/client/logout', [ClientController::class, 'ClientLogout'])->name('client.logout');
     // Client manage profile data
