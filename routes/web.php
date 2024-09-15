@@ -97,8 +97,8 @@ Route::middleware('admin')->group(function () {
 
     // Restaurant All Route
     Route::controller(BannerController::class)->group(function(){
-        Route::get('/all/banner', 'AllBanner')->name('all.banner'); 
-
+        Route::get('/all/banner', 'AllBanner')->name('all.banner');
+        Route::post('/banner/store', 'BannerStore')->name('banner.store');
     });
 });
 // End Admin Group Middleware 
