@@ -76,17 +76,32 @@
         </li>
 
         <li>
-            <a href="javascript: void(0);" class="has-arrow">
+          <a href="javascript: void(0);" class="has-arrow">
             <i class='bx bx-location-plus'></i>
-                <span>City</span>
-            </a>
-            <ul class="sub-menu" aria-expanded="false">
-                <li>
-                    <a href="{{ route('all.city') }}">
-                        <span>All City</span>
-                    </a>
-                </li>
-            </ul>
+            <span>City</span>
+          </a>
+          <ul class="sub-menu" aria-expanded="false">
+            <li>
+              <a href="{{ route('all.city') }}">
+                <span>All City</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <li>
+          <a href="javascript: void(0);" class="has-arrow">
+            <i data-feather="grid"></i>
+            <span data-key="t-apps">Manage Banner</span>
+          </a>
+          <ul class="sub-menu" aria-expanded="false">
+            <li>
+              <a href="{{ route('all.banner') }}">
+                <span data-key="t-calendar">All Banner </span>
+              </a>
+            </li>
+
+          </ul>
         </li>
 
         <li>

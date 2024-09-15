@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\AdminRestPasswordController;
 use App\Http\Controllers\Admin\AdminChangePasswordController;
 
 use App\Http\Controllers\Backend\AdminProductController;
+use App\Http\Controllers\Backend\BannerController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\CityController;
 use App\Http\Controllers\Backend\RestaurantController;
@@ -92,6 +93,12 @@ Route::middleware('admin')->group(function () {
         Route::get('/pending/restaurant', 'PendingRestaurant')->name('pending.restaurant');
         Route::get('/clientChangeStatus', 'ClientChangeStatus');
         Route::get('/approve/restaurant', 'ApproveRestaurant')->name('approve.restaurant');
+    });
+
+    // Restaurant All Route
+    Route::controller(BannerController::class)->group(function(){
+        Route::get('/all/banner', 'AllBanner')->name('all.banner'); 
+
     });
 });
 // End Admin Group Middleware 
