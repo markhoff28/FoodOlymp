@@ -96,10 +96,12 @@ Route::middleware('admin')->group(function () {
     });
 
     // Restaurant All Route
-    Route::controller(BannerController::class)->group(function(){
+    Route::controller(BannerController::class)->group(function () {
         Route::get('/all/banner', 'AllBanner')->name('all.banner');
         Route::post('/banner/store', 'BannerStore')->name('banner.store');
         Route::get('/edit/banner/{id}', 'EditBanner');
+        Route::post('/banner/update', 'BannerUpdate')->name('banner.update');
+        Route::get('/delete/banner/{id}', 'DeleteBanner')->name('delete.banner');
     });
 });
 // End Admin Group Middleware 
