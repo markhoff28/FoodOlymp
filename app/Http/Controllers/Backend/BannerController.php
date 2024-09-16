@@ -39,6 +39,13 @@ class BannerController extends Controller
         );
 
         return redirect()->back()->with($notification);
-    }
-    // End Method
+    } // End Method
+
+    public function EditBanner($id){
+        $banner = Banner::find($id);
+        if ($banner) {
+            $banner->banner_image = asset($banner->banner_image);
+        }
+        return response()->json($banner);
+    } // End Method
 }
