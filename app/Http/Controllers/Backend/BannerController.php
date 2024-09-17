@@ -62,7 +62,7 @@ class BannerController extends Controller
             $save_url = 'upload/banner/'.$name_gen;
 
             Banner::find($banner_id)->update([
-                'url' => $request->url,
+                'banner_url' => $request->url,
                 'banner_image' => $save_url, 
             ]); 
             $notification = array(
@@ -75,7 +75,7 @@ class BannerController extends Controller
         } else {
 
             Banner::find($banner_id)->update([
-                'url' => $request->url, 
+                'banner_url' => $request->url, 
             ]); 
             $notification = array(
                 'message' => 'Banner Updated Successfully',

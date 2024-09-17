@@ -58,7 +58,7 @@
           </a>
           <div class="dropdown-menu dropdown-cart-top p-0 dropdown-menu-right shadow-sm border-0">
             <div class="dropdown-cart-top-header p-4">
-              <img class="img-fluid mr-3" alt="osahan" src="img/cart.jpg">
+              <img class="img-fluid mr-3" alt="osahan" src="{{ asset('frontend/img/cart.jpg') }}">
               <h6 class="mb-0">Gus's World Famous Chicken</h6>
               <p class="text-secondary mb-0">310 S Front St, Memphis, USA</p>
               <small><a class="text-primary font-weight-bold" href="#">View Full Menu</a></small>
