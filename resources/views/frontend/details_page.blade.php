@@ -1,19 +1,29 @@
 @include('frontend.dashboard.body.header')
 
+@php
+$products = App\Models\Product::where('client_id',$client->id)->limit(3)->get();
+$menuNames = $products->map(function($product){
+return $product->menu->menu_name;
+})->toArray();
+$menuNamesString = implode(' . ',$menuNames);
+
+$coupons = App\Models\Coupon::where('client_id',$client->id)->where('status','1')->first();
+@endphp
+
 <section class="restaurant-detailed-banner">
   <div class="text-center">
-    <img class="img-fluid cover" src="{{ asset('frontend/img/mall-dedicated-banner.png') }}">
+    <img class="img-fluid cover" src="{{ asset('upload/client_images/' . $client->cover_photo ) }}">
   </div>
   <div class="restaurant-detailed-header">
     <div class="container">
       <div class="row d-flex align-items-end">
         <div class="col-md-8">
           <div class="restaurant-detailed-header-left">
-            <img class="img-fluid mr-3 float-left" alt="osahan" src="img/1.jpg">
-            <h2 class="text-white">Spice Hut Indian Restaurant</h2>
-            <p class="text-white mb-1"><i class="icofont-location-pin"></i> 2036 2ND AVE, NEW YORK, NY 10029 <span class="badge badge-success">OPEN</span>
+            <img class="img-fluid mr-3 float-left" alt="osahan" src="{{ asset('upload/client_images/' . $client->photo ) }}">
+            <h2 class="text-white">{{ $client->name }}</h2>
+            <p class="text-white mb-1"><i class="icofont-location-pin"></i>{{ $client->address }} <span class="badge badge-success">OPEN</span>
             </p>
-            <p class="text-white mb-0"><i class="icofont-food-cart"></i> North Indian, Chinese, Fast Food, South Indian
+            <p class="text-white mb-0"><i class="icofont-food-cart"></i> {{$menuNamesString}}
             </p>
           </div>
         </div>
@@ -66,26 +76,44 @@
         <div class="offer-dedicated-body-left">
           <div class="tab-content" id="pills-tabContent">
             <div class="tab-pane fade show active" id="pills-order-online" role="tabpanel" aria-labelledby="pills-order-online-tab">
+
+              @php
+              $populers = App\Models\Product::where('status',1)->where('client_id',$client->id)->where('most_populer',1)->orderBy('id','desc')->limit(5)->get();
+              @endphp
               <div id="#menu" class="bg-white rounded shadow-sm p-4 mb-4 explore-outlets">
                 <h6 class="mb-3">Most Popular <span class="badge badge-success"><i class="icofont-tags"></i> 15% Off All Items </span></h6>
                 <div class="owl-carousel owl-theme owl-carousel-five offers-interested-carousel mb-3">
 
+                  @foreach ($populers as $populer)
                   <div class="item">
                     <div class="mall-category-item">
                       <a href="#">
-                        <img class="img-fluid" src="{{ asset('frontend/img/list/1.png') }}">
-                        <h6>Burgers</h6>
-                        <small>5 ITEMS</small>
+                        <img class="img-fluid" src="{{ asset($populer->image) }}">
+                        <h6>{{ $populer->name }}</h6>
+                        @if ($populer->discount_price == NULL)
+                        ${{$populer->price}}
+                        @else
+                        $<del>{{$populer->price}}</del> ${{$populer->discount_price}}
+                        @endif
+                        <span class="float-right">
+                          <a class="btn btn-outline-secondary btn-sm" href="#">ADD</a>
+                        </span>
                       </a>
                     </div>
                   </div>
+                  @endforeach
 
 
                 </div>
               </div>
+
+              @php
+              $bestsellers = App\Models\Product::where('status',1)->where('client_id',$client->id)->where('best_seller',1)->orderBy('id','desc')->limit(3)->get();
+              @endphp
+
               <div class="row">
                 <h5 class="mb-4 mt-3 col-md-12">Best Sellers</h5>
-
+                @foreach ($bestsellers as $bestseller)
                 <div class="col-md-4 col-sm-6 mb-4">
                   <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
                     <div class="list-card-image">
@@ -93,14 +121,23 @@
                       <div class="favourite-heart text-danger position-absolute"><a href="#"><i class="icofont-heart"></i></a></div>
                       <div class="member-plan position-absolute"><span class="badge badge-dark">Promoted</span></div>
                       <a href="#">
-                        <img src="img/list/7.png" class="img-fluid item-img">
+                        <img src="{{ asset($bestseller->image) }}" class="img-fluid item-img">
                       </a>
                     </div>
                     <div class="p-3 position-relative">
                       <div class="list-card-body">
-                        <h6 class="mb-1"><a href="#" class="text-black">Bite Me Sandwiches</a></h6>
-                        <p class="text-gray mb-2">North Indian • Indian</p>
-                        <p class="text-gray time mb-0"><a class="btn btn-link btn-sm text-black" href="#">$550 <span class="badge badge-success">NEW</span></a> <span class="float-right">
+                        <h6 class="mb-1"><a href="#" class="text-black">{{$bestseller->name}}</a></h6>
+                        <p class="text-gray mb-2">{{ $bestseller['city']['city_name'] }}</p>
+
+                        <p class="text-gray time mb-0">
+                          @if ($bestseller->discount_price == NULL)
+                          <a class="btn btn-link btn-sm text-black" href="#">${{$bestseller->price}} </a>
+                          @else
+                          $<del>{{$bestseller->price}}</del>
+                          <a class="btn btn-link btn-sm text-black" href="#">${{$bestseller->discount_price}} </a>
+
+                          @endif
+                          <span class="float-right">
                             <a class="btn btn-outline-secondary btn-sm" href="#">ADD</a>
                           </span>
                         </p>
@@ -108,34 +145,43 @@
                     </div>
                   </div>
                 </div>
-
+                @endforeach
 
 
               </div>
 
 
-
+              @foreach ($menus as $menu)
               <div class="row">
-                <h5 class="mb-4 mt-3 col-md-12">Starters <small class="h6 text-black-50">3 ITEMS</small></h5>
+                <h5 class="mb-4 mt-3 col-md-12">{{ $menu->menu_name }} <small class="h6 text-black-50">{{ $menu->products->count() }} ITEMS</small></h5>
                 <div class="col-md-12">
                   <div class="bg-white rounded border shadow-sm mb-4">
-                    <div class="menu-list p-3 border-bottom">
 
+                    @foreach ($menu->products as $product)
+                    <div class="menu-list p-3 border-bottom">
                       <a class="btn btn-outline-secondary btn-sm  float-right" href="#">ADD</a>
 
                       <div class="media">
-                        <img class="mr-3 rounded-pill" src="{{ asset('frontend/img/5.jpg') }}" alt="Generic placeholder image">
+                        <img class="mr-3 rounded-pill" src="{{ asset($product->image) }}" alt="Generic placeholder image">
                         <div class="media-body">
-                          <h6 class="mb-1">Veg Spring Roll</h6>
-                          <p class="text-gray mb-0">$314 - 12" (30 cm)</p>
+                          <h6 class="mb-1">{{$product->name}}</h6>
+                          @if ($product->size == NULL)
+                          <p class="text-gray mb-0"> </p>
+                          @else
+                          <p class="text-gray mb-0"> ({{$product->size}} cm)</p>
+                          @endif
+
                         </div>
                       </div>
                     </div>
-
+                    @endforeach
 
                   </div>
                 </div>
               </div>
+              @endforeach
+
+
 
 
             </div>

@@ -11,12 +11,20 @@ class Product extends Model
     protected $guarded = [];
 
     // Find the menu
-    public function menu(){
-        return $this->belongsTo(Menu::class, 'menu_id','id');
+    public function menu()
+    {
+        return $this->belongsTo(Menu::class, 'menu_id', 'id');
     }
 
     // Find the clients
-    public function client(){
-        return $this->belongsTo(Client::class, 'client_id','id');
+    public function client()
+    {
+        return $this->belongsTo(Client::class, 'client_id', 'id');
+    }
+
+    // Find the city
+    public function city()
+    {
+        return $this->belongsTo(City::class, 'city_id', 'id');
     }
 }
