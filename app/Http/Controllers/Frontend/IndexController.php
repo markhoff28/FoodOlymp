@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Client;
 
 class IndexController extends Controller
 {
@@ -11,4 +12,11 @@ class IndexController extends Controller
     {
         return view('frontend.index');
     } // End Method
+
+    public function RestaurantDetails($id)
+    {
+        $client = Client::find($id);
+        return view('frontend.details_page', compact('client'));
+    }
+    //End Method
 }

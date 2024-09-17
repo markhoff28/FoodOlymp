@@ -169,7 +169,14 @@ Route::middleware('client', 'status')->group(function () {
 });
 // End Client Group Group Middleware
 
+// Route Accessable for All 
 Route::get('/client/login', [ClientController::class, 'ClientLogin'])->name('client.login');
 Route::get('/client/register', [ClientController::class, 'ClientRegister'])->name('client.register');
 Route::post('/client/register/submit', [ClientController::class, 'ClientRegisterSubmit'])->name('client.register.submit');
 Route::post('/client/login_submit', [ClientController::class, 'ClientLoginSubmit'])->name('client.login_submit');
+
+// Frontend Routes
+Route::controller(IndexController::class)->group(function(){
+    Route::get('/restaurant/details/{id}', 'RestaurantDetails')->name('res.details'); 
+
+});
