@@ -20,6 +20,7 @@ use App\Http\Controllers\Client\Backend\MenuController;
 use App\Http\Controllers\Client\Backend\ProductController;
 
 use App\Http\Controllers\Frontend\IndexController;
+use App\Http\Controllers\Frontend\WishlistController;
 use App\Http\Controllers\Frontend\UserController;
 use App\Http\Controllers\Frontend\User\UserChangePasswordController;
 
@@ -176,7 +177,12 @@ Route::post('/client/register/submit', [ClientController::class, 'ClientRegister
 Route::post('/client/login_submit', [ClientController::class, 'ClientLoginSubmit'])->name('client.login_submit');
 
 // Frontend Routes
-Route::controller(IndexController::class)->group(function(){
-    Route::get('/restaurant/details/{id}', 'RestaurantDetails')->name('res.details'); 
+Route::controller(IndexController::class)->group(function () {
+    Route::get('/restaurant/details/{id}', 'RestaurantDetails')->name('res.details');
+});
 
+//
+// Add to Wishlist 
+Route::controller(WishlistController::class)->group(function () {
+    Route::post('/add-wish-list/{id}', 'AddWishList');
 });
