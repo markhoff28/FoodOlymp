@@ -181,38 +181,28 @@ $coupons = App\Models\Coupon::where('client_id',$client->id)->where('status','1'
               </div>
               @endforeach
 
-
-
-
             </div>
+
+
             <div class="tab-pane fade" id="pills-gallery" role="tabpanel" aria-labelledby="pills-gallery-tab">
               <div id="gallery" class="bg-white rounded shadow-sm p-4 mb-4">
                 <div class="restaurant-slider-main position-relative homepage-great-deals-carousel">
                   <div class="owl-carousel owl-theme homepage-ad">
+
+                    @foreach ($gallerys as $index => $gallery)
+
                     <div class="item">
-                      <img class="img-fluid" src="img/gallery/1.png">
+                      <img class="img-fluid" src="{{ asset($gallery->gallery_img) }}">
+                      <div class="position-absolute restaurant-slider-pics bg-dark text-white">{{ $index + 1 }} of {{ $gallerys->count() }} Photos</div>
                     </div>
-                    <div class="item">
-                      <img class="img-fluid" src="img/gallery/2.png">
-                    </div>
-                    <div class="item">
-                      <img class="img-fluid" src="img/gallery/3.png">
-                    </div>
-                    <div class="item">
-                      <img class="img-fluid" src="img/gallery/1.png">
-                    </div>
-                    <div class="item">
-                      <img class="img-fluid" src="img/gallery/2.png">
-                    </div>
-                    <div class="item">
-                      <img class="img-fluid" src="img/gallery/3.png">
-                    </div>
+                    @endforeach
+
                   </div>
-                  <div class="position-absolute restaurant-slider-pics bg-dark text-white">2 of 14 Photos</div>
-                  <div class="position-absolute restaurant-slider-view-all"><button type="button" class="btn btn-light bg-white">See all Photos</button></div>
                 </div>
               </div>
             </div>
+
+
             <div class="tab-pane fade" id="pills-restaurant-info" role="tabpanel" aria-labelledby="pills-restaurant-info-tab">
               <div id="restaurant-info" class="bg-white rounded shadow-sm p-4 mb-4">
                 <div class="address-map float-right ml-5">
@@ -221,12 +211,12 @@ $coupons = App\Models\Coupon::where('client_id',$client->id)->where('status','1'
                   </div>
                 </div>
                 <h5 class="mb-4">Restaurant Info</h5>
-                <p class="mb-3">Jagjit Nagar, Near Railway Crossing,
-                  <br> Near Model Town, Ludhiana, PUNJAB
+                <p class="mb-3">{{ $client->address }}
+
                 </p>
-                <p class="mb-2 text-black"><i class="icofont-phone-circle text-primary mr-2"></i> +91 01234-56789, +91 01234-56789</p>
-                <p class="mb-2 text-black"><i class="icofont-email text-primary mr-2"></i> iamosahan@gmail.com, osahaneat@gmail.com</p>
-                <p class="mb-2 text-black"><i class="icofont-clock-time text-primary mr-2"></i> Today 11am – 5pm, 6pm – 11pm
+                <p class="mb-2 text-black"><i class="icofont-phone-circle text-primary mr-2"></i> {{ $client->phone }}</p>
+                <p class="mb-2 text-black"><i class="icofont-email text-primary mr-2"></i> {{ $client->email }}</p>
+                <p class="mb-2 text-black"><i class="icofont-clock-time text-primary mr-2"></i> {{ $client->shop_info }}
                   <span class="badge badge-success"> OPEN NOW </span>
                 </p>
                 <hr class="clearfix">
@@ -245,6 +235,8 @@ $coupons = App\Models\Coupon::where('client_id',$client->id)->where('status','1'
                 </div>
               </div>
             </div>
+
+
             <div class="tab-pane fade" id="pills-book" role="tabpanel" aria-labelledby="pills-book-tab">
               <div id="book-a-table" class="bg-white rounded shadow-sm p-4 mb-5 rating-review-select-page">
                 <h5 class="mb-4">Book A Table</h5>

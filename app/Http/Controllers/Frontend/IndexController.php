@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Client;
+use App\Models\Gallery;
 use App\Models\Menu;
 
 class IndexController extends Controller
@@ -20,7 +21,8 @@ class IndexController extends Controller
         $menus = Menu::where('client_id', $client->id)->get()->filter(function ($menu) {
             return $menu->products->isNotEmpty();
         });
-        return view('frontend.details_page', compact('client', 'menus'));
+        $gallerys = Gallery::where('client_id',$id)->get();
+        return view('frontend.details_page',compact('client','menus','gallerys'));
     }
     //End Method
 }
