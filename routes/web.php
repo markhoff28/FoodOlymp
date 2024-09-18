@@ -23,6 +23,7 @@ use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\WishlistController;
 use App\Http\Controllers\Frontend\UserController;
 use App\Http\Controllers\Frontend\User\UserChangePasswordController;
+use App\Http\Controllers\Frontend\User\UserWishlistController;
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ClientController;
@@ -43,6 +44,10 @@ Route::middleware('auth')->group(function () {
     // Usee update password
     Route::get('/change/password', [UserChangePasswordController::class, 'ChangePassword'])->name('change.password');
     Route::post('/user/password/update', [UserChangePasswordController::class, 'UserPasswordUpdate'])->name('user.password.update');
+
+    // Get Wishlist data for user 
+    Route::get('/all/wishlist', [UserWishlistController::class, 'AllWishlist'])->name('all.wishlist');
+    Route::get('/remove/wishlist/{id}', [UserWishlistController::class, 'RemoveWishlist'])->name('remove.wishlist');
 });
 
 require __DIR__ . '/auth.php';
