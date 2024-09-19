@@ -7,7 +7,7 @@
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="{{ route('index') }}">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="offers.html"><i class="icofont-sale-discount"></i> Offers <span class="badge badge-danger">New</span></a>
@@ -18,6 +18,8 @@
             </a>
 
           </li>
+
+          @auth
           @php
           $id = Auth::user()->id;
           $profileData = App\Models\User::find($id);
@@ -33,6 +35,20 @@
 
             </div>
           </li>
+          @else
+
+          <li class="nav-item dropdown">
+            <a class="nav-link" href="{{ route('login') }}" role="button" aria-haspopup="true" aria-expanded="false">
+              Login
+            </a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link" href="{{ route('register') }}" role="button" aria-haspopup="true" aria-expanded="false">
+              Register
+            </a>
+          </li>
+          @endauth
+
           <li class="nav-item dropdown dropdown-cart">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <i class="fas fa-shopping-basket"></i> Cart
