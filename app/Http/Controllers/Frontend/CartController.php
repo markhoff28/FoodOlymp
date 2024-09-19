@@ -35,6 +35,39 @@ class CartController extends Controller
             'alert-type' => 'success'
         );
         return redirect()->back()->with($notification);
-    }
-    //End Method
+    } //End Method
+
+    public function updateCartQuanity(Request $request)
+    {
+        $cart = session()->get('cart', []);
+        if (isset($cart[$request->id])) {
+            $cart[$request->id]['quantity'] = $request->quantity;
+            session()->put('cart', $cart);
+        }
+        $notification = array(
+            'message' => 'Cart Updated Successfully',
+            'alert-type' => 'success'
+        );
+        return response()->json([
+            'message' => 'Quantity Updated',
+            'alert-type' => 'success'
+        ]);
+    } //End Method
+
+    public function CartRemove(Request $request)
+    {
+        $cart = session()->get('cart', []);
+        if (isset($cart[$request->id])) {
+            unset($cart[$request->id]);
+            session()->put('cart', $cart);
+        }
+        $notification = array(
+            'message' => 'Product Remove Successfully',
+            'alert-type' => 'success'
+        );
+        return response()->json([
+            'message' => 'Cart Remove Successfully',
+            'alert-type' => 'success'
+        ]);
+    } //End Method
 }
