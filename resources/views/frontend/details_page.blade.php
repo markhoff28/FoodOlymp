@@ -1,4 +1,5 @@
-@include('frontend.dashboard.body.header')
+@extends('frontend.dashboard.dashboard')
+@section('dashboard')
 
 @php
 $products = App\Models\Product::where('client_id',$client->id)->limit(3)->get();
@@ -537,4 +538,4 @@ $coupons = App\Models\Coupon::where('client_id',$client->id)->where('status','1'
 
 
 
-@include('frontend.dashboard.body.footer')
+@endsection
