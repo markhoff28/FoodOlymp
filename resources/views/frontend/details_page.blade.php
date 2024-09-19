@@ -97,7 +97,7 @@ $coupons = App\Models\Coupon::where('client_id',$client->id)->where('status','1'
                         $<del>{{$populer->price}}</del> ${{$populer->discount_price}}
                         @endif
                         <span class="float-right">
-                          <a class="btn btn-outline-secondary btn-sm" href="#">ADD</a>
+                          <a class="btn btn-outline-secondary btn-sm" href="{{ route('add_to_cart',$populer->id)}}">ADD</a>
                         </span>
                       </a>
                     </div>
@@ -139,7 +139,7 @@ $coupons = App\Models\Coupon::where('client_id',$client->id)->where('status','1'
 
                           @endif
                           <span class="float-right">
-                            <a class="btn btn-outline-secondary btn-sm" href="#">ADD</a>
+                            <a class="btn btn-outline-secondary btn-sm" href="{{ route('add_to_cart',$populer->id)}}">ADD</a>
                           </span>
                         </p>
                       </div>
@@ -160,17 +160,13 @@ $coupons = App\Models\Coupon::where('client_id',$client->id)->where('status','1'
 
                     @foreach ($menu->products as $product)
                     <div class="menu-list p-3 border-bottom">
-                      <a class="btn btn-outline-secondary btn-sm  float-right" href="#">ADD</a>
+                      <a class="btn btn-outline-secondary btn-sm  float-right" href="{{ route('add_to_cart',$populer->id)}}">ADD</a>
 
                       <div class="media">
                         <img class="mr-3 rounded-pill" src="{{ asset($product->image) }}" alt="Generic placeholder image">
                         <div class="media-body">
                           <h6 class="mb-1">{{$product->name}}</h6>
-                          @if ($product->size == NULL)
-                          <p class="text-gray mb-0"> </p>
-                          @else
-                          <p class="text-gray mb-0"> ({{$product->size}} cm)</p>
-                          @endif
+                          <p class="text-gray mb-0">${{ $product->price }} ({{ $product->size ?? '' }} cm)</p>
 
                         </div>
                       </div>
@@ -362,7 +358,7 @@ $coupons = App\Models\Coupon::where('client_id',$client->id)->where('status','1'
                 <h5 class="mb-1">All Ratings and Reviews</h5>
                 <div class="reviews-members pt-4 pb-4">
                   <div class="media">
-                    <a href="#"><img alt="Generic placeholder image" src="img/user/1.png" class="mr-3 rounded-pill"></a>
+                    <a href="#"><img alt="Generic placeholder image" src="{{ asset('frontend/img/user/1.png') }}" class="mr-3 rounded-pill"></a>
                     <div class="media-body">
                       <div class="reviews-members-header">
                         <span class="star-rating float-right">
@@ -419,7 +415,7 @@ $coupons = App\Models\Coupon::where('client_id',$client->id)->where('status','1'
       <div class="col-md-4">
         <div class="pb-2">
           <div class="bg-white rounded shadow-sm text-white mb-4 p-4 clearfix restaurant-detailed-earn-pts card-icon-overlap">
-            <img class="img-fluid float-left mr-3" src="img/earn-score-icon.png">
+            <img class="img-fluid float-left mr-3" src="{{ asset('frontend/img/earn-score-icon.png') }}">
             <h6 class="pt-0 text-primary mb-1 font-weight-bold">OFFER</h6>
             <p class="mb-0">60% off on orders above $99 | Use coupon <span class="text-danger font-weight-bold">OSAHAN50</span></p>
             <div class="icon-overlap">
@@ -517,7 +513,7 @@ $coupons = App\Models\Coupon::where('client_id',$client->id)->where('status','1'
             </div>
           </div>
           <div class="mb-2 bg-white rounded p-2 clearfix">
-            <img class="img-fluid float-left" src="img/wallet-icon.png">
+            <img class="img-fluid float-left" src="{{ asset('frontend/img/wallet-icon.png') }}">
             <h6 class="font-weight-bold text-right mb-2">Subtotal : <span class="text-danger">$456.4</span></h6>
             <p class="seven-color mb-1 text-right">Extra charges may apply</p>
             <p class="text-black mb-0 text-right">You have saved $955 on the bill</p>

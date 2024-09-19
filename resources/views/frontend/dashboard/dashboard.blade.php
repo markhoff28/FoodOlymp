@@ -24,6 +24,8 @@
   <link rel="stylesheet" href="{{ asset('frontend/vendor/owl-carousel/owl.carousel.css') }}">
   <link rel="stylesheet" href="{{ asset('frontend/vendor/owl-carousel/owl.theme.css') }}">
 
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
+
 </head>
 
 <body>
@@ -36,6 +38,41 @@
 
   @include('frontend.dashboard.body.footer')
 
+  <!-- jQuery -->
+  <script src="{{ asset('frontend/vendor/jquery/jquery-3.3.1.slim.min.js') }}"></script>
+  <!-- Bootstrap core JavaScript-->
+  <script src="{{ asset('frontend/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+  <!-- Select2 JavaScript-->
+  <script src="{{ asset('frontend/vendor/select2/js/select2.min.js') }}"></script>
+  <script src="{{ asset('frontend/vendor/owl-carousel/owl.carousel.js') }}"></script>
+  <!-- Custom scripts for all pages-->
+  <script src="{{ asset('frontend/js/custom.js') }}"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+  <script>
+    @if(Session::has('message'))
+    var type = "{{ Session::get('alert-type','info') }}"
+    switch (type) {
+      case 'info':
+        toastr.info(" {{ Session::get('message') }} ");
+        break;
+
+      case 'success':
+        toastr.success(" {{ Session::get('message') }} ");
+        break;
+
+      case 'warning':
+        toastr.warning(" {{ Session::get('message') }} ");
+        break;
+
+      case 'error':
+        toastr.error(" {{ Session::get('message') }} ");
+        break;
+    }
+    @endif
+  </script>
 </body>
 
 </html>

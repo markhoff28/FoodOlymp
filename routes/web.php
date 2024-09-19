@@ -19,9 +19,10 @@ use App\Http\Controllers\Client\Backend\GalleryController;
 use App\Http\Controllers\Client\Backend\MenuController;
 use App\Http\Controllers\Client\Backend\ProductController;
 
+use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\IndexController;
-use App\Http\Controllers\Frontend\WishlistController;
 use App\Http\Controllers\Frontend\UserController;
+use App\Http\Controllers\Frontend\WishlistController;
 use App\Http\Controllers\Frontend\User\UserChangePasswordController;
 use App\Http\Controllers\Frontend\User\UserWishlistController;
 
@@ -190,4 +191,12 @@ Route::controller(IndexController::class)->group(function () {
 // Add to Wishlist 
 Route::controller(WishlistController::class)->group(function () {
     Route::post('/add-wish-list/{id}', 'AddWishList');
+});
+
+
+// Cart routes
+
+// Add to cart store data
+Route::controller(CartController::class)->group(function () {
+    Route::get('/add_to_cart/{id}', 'AddToCart')->name('add_to_cart');
 });

@@ -24,6 +24,8 @@
   <!-- Owl Carousel -->
   <link rel="stylesheet" href="{{ asset('frontend/vendor/owl-carousel/owl.carousel.css') }}">
   <link rel="stylesheet" href="{{ asset('frontend/vendor/owl-carousel/owl.theme.css') }}">
+
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
 </head>
 
 <body>
@@ -56,52 +58,32 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
-  {{-- ------------ Wishlist Add Start ----------- --}}
-  <script type="text/javascript">
-    $.ajaxSetup({
-      headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-      }
-    });
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+  <script>
+    @if(Session::has('message'))
+    var type = "{{ Session::get('alert-type','info') }}"
+    switch (type) {
+      case 'info':
+        toastr.info(" {{ Session::get('message') }} ");
+        break;
 
-    function addWishList(id) {
-      //alert(id)
-      $.ajax({
-        type: "POST",
-        dataType: "json",
-        url: "/add-wish-list/" + id,
-        headers: {
-          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        },
-        success: function(data) {
-          // Start Message 
-          const Toast = Swal.mixin({
-            toast: true,
-            position: 'top-end',
+      case 'success':
+        toastr.success(" {{ Session::get('message') }} ");
+        break;
 
-            showConfirmButton: false,
-            timer: 3000
-          })
-          if ($.isEmptyObject(data.error)) {
+      case 'warning':
+        toastr.warning(" {{ Session::get('message') }} ");
+        break;
 
-            Toast.fire({
-              type: 'success',
-              icon: 'success',
-              title: data.success,
-            })
-          } else {
-
-            Toast.fire({
-              type: 'error',
-              icon: 'error',
-              title: data.error,
-            })
-          }
-          // End Message  
-        }
-      })
+      case 'error':
+        toastr.error(" {{ Session::get('message') }} ");
+        break;
     }
+    @endif
   </script>
+
+  @include('frontend.layouts.script')
+
 </body>
 
 </html>
