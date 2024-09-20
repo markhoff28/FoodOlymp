@@ -70,4 +70,10 @@ class CartController extends Controller
             'alert-type' => 'success'
         ]);
     } //End Method
+
+    /**
+     * Coupon Section
+     */
+    public function ApplyCoupon() {}
+    //End Method 
 }
