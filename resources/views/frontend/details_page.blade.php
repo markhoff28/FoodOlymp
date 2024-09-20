@@ -477,7 +477,9 @@ $coupons = App\Models\Coupon::where('client_id',$client->id)->where('status','1'
           <div class="mb-2 bg-white rounded p-2 clearfix">
             <p class="mb-1">Item Total <span class="float-right text-dark">{{ count((array) session('cart')) }}</span></p>
 
-            <p class="mb-1">Coupon Name <span class="float-right text-dark">{{ (session()->get('coupon')['coupon_name']) }} ( {{ (session()->get('coupon')['discount']) }} %) </span></p>
+            <p class="mb-1">Coupon Name <span class="float-right text-dark">{{ (session()->get('coupon')['coupon_name']) }} ( {{ (session()->get('coupon')['discount']) }} %) </span>
+              <a type="submit" onclick="couponRemove()"><i class="icofont-ui-delete float-right" style="color: red;"></i></a>
+            </p>
 
 
             <p class="mb-1 text-success">Total Discount
