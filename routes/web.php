@@ -27,6 +27,8 @@ use App\Http\Controllers\Frontend\WishlistController;
 use App\Http\Controllers\Frontend\User\UserChangePasswordController;
 use App\Http\Controllers\Frontend\User\UserWishlistController;
 
+use App\Http\Controllers\Payment\CashOnDeliveryController;
+
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ClientController;
 
@@ -208,3 +210,8 @@ Route::controller(CartController::class)->group(function () {
 
 // Checkout Page Route 
 Route::get('/checkout', [CheckoutController::class, 'ShopCheckout'])->name('checkout');
+
+Route::controller(CashOnDeliveryController::class)->group(function(){
+    Route::post('/cash_order', 'CashOrder')->name('cash_order');
+   
+});
