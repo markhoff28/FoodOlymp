@@ -20,6 +20,7 @@ use App\Http\Controllers\Client\Backend\MenuController;
 use App\Http\Controllers\Client\Backend\ProductController;
 
 use App\Http\Controllers\Frontend\CartController;
+use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\UserController;
 use App\Http\Controllers\Frontend\WishlistController;
@@ -204,3 +205,6 @@ Route::controller(CartController::class)->group(function () {
     Route::post('/apply-coupon', 'ApplyCoupon');
     Route::get('/remove-coupon', 'CouponRemove');
 });
+
+// Checkout Page Route 
+Route::get('/checkout', [CheckoutController::class, 'ShopCheckout'])->name('checkout');
