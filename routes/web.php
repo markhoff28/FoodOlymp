@@ -15,6 +15,7 @@ use App\Http\Controllers\Backend\RestaurantController;
 
 use App\Http\Controllers\Client\ClientProfilController;
 use App\Http\Controllers\Client\ClientChangePasswordController;
+use App\Http\Controllers\Client\Backend\ClientOrderController;
 use App\Http\Controllers\Client\Backend\CouponController;
 use App\Http\Controllers\Client\Backend\GalleryController;
 use App\Http\Controllers\Client\Backend\MenuController;
@@ -106,7 +107,7 @@ Route::middleware('admin')->group(function () {
         Route::get('/approve/restaurant', 'ApproveRestaurant')->name('approve.restaurant');
     });
 
-    // Restaurant All Route
+    // Bannewr All Route
     Route::controller(BannerController::class)->group(function () {
         Route::get('/all/banner', 'AllBanner')->name('all.banner');
         Route::post('/banner/store', 'BannerStore')->name('banner.store');
@@ -115,6 +116,7 @@ Route::middleware('admin')->group(function () {
         Route::get('/delete/banner/{id}', 'DeleteBanner')->name('delete.banner');
     });
 
+   // Admin All Order Route 
     Route::controller(OrderController::class)->group(function () {
         Route::get('/pending/order', 'PendingOrder')->name('pending.order');
         Route::get('/admin/order/details/{id}', 'AdminOrderDetails')->name('admin.order.details');
@@ -189,6 +191,12 @@ Route::middleware('client', 'status')->group(function () {
         Route::get('/edit/coupon/{id}', 'EditCoupon')->name('edit.coupon');
         Route::post('/update/coupon', 'UpdateCoupon')->name('coupon.update');
         Route::get('/delete/coupon/{id}', 'DeleteCoupon')->name('delete.coupon');
+    });
+
+    // Client All Order Route 
+    Route::controller(ClientOrderController::class)->group(function(){
+        Route::get('/all/client/orders', 'AllClientOrders')->name('all.client.orders');
+        Route::get('/client/order/details/{id}', 'ClientOrderDetails')->name('client.order.details'); 
     });
 });
 // End Client Group Group Middleware
