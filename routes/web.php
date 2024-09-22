@@ -10,6 +10,7 @@ use App\Http\Controllers\Backend\AdminProductController;
 use App\Http\Controllers\Backend\BannerController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\CityController;
+use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Backend\RestaurantController;
 
 use App\Http\Controllers\Client\ClientProfilController;
@@ -113,6 +114,13 @@ Route::middleware('admin')->group(function () {
         Route::post('/banner/update', 'BannerUpdate')->name('banner.update');
         Route::get('/delete/banner/{id}', 'DeleteBanner')->name('delete.banner');
     });
+
+    Route::controller(OrderController::class)->group(function () {
+        Route::get('/pending/order', 'PendingOrder')->name('pending.order');
+        Route::get('/confirm/order', 'ConfirmOrder')->name('confirm.order');
+        Route::get('/processing/order', 'ProcessingOrder')->name('processing.order');
+        Route::get('/deliverd/order', 'DeliverdOrder')->name('deliverd.order');
+    });
 });
 // End Admin Group Middleware 
 
@@ -211,7 +219,6 @@ Route::controller(CartController::class)->group(function () {
 // Checkout Page Route 
 Route::get('/checkout', [CheckoutController::class, 'ShopCheckout'])->name('checkout');
 
-Route::controller(CashOnDeliveryController::class)->group(function(){
+Route::controller(CashOnDeliveryController::class)->group(function () {
     Route::post('/cash_order', 'CashOrder')->name('cash_order');
-   
 });
