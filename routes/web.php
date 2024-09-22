@@ -121,6 +121,11 @@ Route::middleware('admin')->group(function () {
         Route::get('/confirm/order', 'ConfirmOrder')->name('confirm.order');
         Route::get('/processing/order', 'ProcessingOrder')->name('processing.order');
         Route::get('/deliverd/order', 'DeliverdOrder')->name('deliverd.order');
+
+        // Update order status
+        Route::get('/pening_to_confirm/{id}', 'PendingToConfirm')->name('pening_to_confirm');
+        Route::get('/confirm_to_processing/{id}', 'ConfirmToProcessing')->name('confirm_to_processing');
+        Route::get('/processing_to_deliverd/{id}', 'ProcessingToDiliverd')->name('processing_to_deliverd');
     });
 });
 // End Admin Group Middleware 
