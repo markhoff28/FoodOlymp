@@ -117,6 +117,7 @@ Route::middleware('admin')->group(function () {
 
     Route::controller(OrderController::class)->group(function () {
         Route::get('/pending/order', 'PendingOrder')->name('pending.order');
+        Route::get('/admin/order/details/{id}', 'AdminOrderDetails')->name('admin.order.details');
         Route::get('/confirm/order', 'ConfirmOrder')->name('confirm.order');
         Route::get('/processing/order', 'ProcessingOrder')->name('processing.order');
         Route::get('/deliverd/order', 'DeliverdOrder')->name('deliverd.order');
