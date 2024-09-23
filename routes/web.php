@@ -27,6 +27,7 @@ use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\UserController;
 use App\Http\Controllers\Frontend\WishlistController;
 use App\Http\Controllers\Frontend\User\UserChangePasswordController;
+use App\Http\Controllers\Frontend\User\UserOrderController;
 use App\Http\Controllers\Frontend\User\UserWishlistController;
 
 use App\Http\Controllers\Payment\CashOnDeliveryController;
@@ -54,6 +55,12 @@ Route::middleware('auth')->group(function () {
     // Get Wishlist data for user 
     Route::get('/all/wishlist', [UserWishlistController::class, 'AllWishlist'])->name('all.wishlist');
     Route::get('/remove/wishlist/{id}', [UserWishlistController::class, 'RemoveWishlist'])->name('remove.wishlist');
+
+    // User Order All Routes
+    Route::controller(UserOrderController::class)->group(function () {
+        Route::get('/user/order/list', 'UserOrderList')->name('user.order.list');
+        Route::get('/user/order/details/{id}', 'UserOrderDetails')->name('user.order.details');
+    });
 });
 
 require __DIR__ . '/auth.php';
@@ -116,7 +123,7 @@ Route::middleware('admin')->group(function () {
         Route::get('/delete/banner/{id}', 'DeleteBanner')->name('delete.banner');
     });
 
-   // Admin All Order Route 
+    // Admin All Order Route 
     Route::controller(OrderController::class)->group(function () {
         Route::get('/pending/order', 'PendingOrder')->name('pending.order');
         Route::get('/admin/order/details/{id}', 'AdminOrderDetails')->name('admin.order.details');
@@ -194,9 +201,9 @@ Route::middleware('client', 'status')->group(function () {
     });
 
     // Client All Order Route 
-    Route::controller(ClientOrderController::class)->group(function(){
+    Route::controller(ClientOrderController::class)->group(function () {
         Route::get('/all/client/orders', 'AllClientOrders')->name('all.client.orders');
-        Route::get('/client/order/details/{id}', 'ClientOrderDetails')->name('client.order.details'); 
+        Route::get('/client/order/details/{id}', 'ClientOrderDetails')->name('client.order.details');
     });
 });
 // End Client Group Group Middleware
