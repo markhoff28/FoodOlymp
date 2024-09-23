@@ -26,8 +26,9 @@ class ClientOrderController extends Controller
 
     public function ClientOrderDetails($id)
     {
+        $cid = Auth::guard('client')->id();
         $order = Order::with('user')->where('id', $id)->first();
-        $orderItem = OrderItem::with('product')->where('order_id', $id)->orderBy('id', 'desc')->get();
+        $orderItem = OrderItem::with('product')->where('order_id', $id)->where('client_id', $cid)->orderBy('id', 'desc')->get();
         $totalPrice = 0;
         foreach ($orderItem as $item) {
             $totalPrice += $item->price * $item->qty;
