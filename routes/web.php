@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\AdminRestPasswordController;
 use App\Http\Controllers\Admin\AdminChangePasswordController;
 
 use App\Http\Controllers\Backend\AdminProductController;
+use App\Http\Controllers\Backend\AdminReportController;
 use App\Http\Controllers\Backend\BannerController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\CityController;
@@ -136,6 +137,10 @@ Route::middleware('admin')->group(function () {
         Route::get('/pening_to_confirm/{id}', 'PendingToConfirm')->name('pening_to_confirm');
         Route::get('/confirm_to_processing/{id}', 'ConfirmToProcessing')->name('confirm_to_processing');
         Route::get('/processing_to_deliverd/{id}', 'ProcessingToDiliverd')->name('processing_to_deliverd');
+    });
+
+    Route::controller(AdminReportController::class)->group(function(){
+        Route::get('/admin/all/reports', 'AminAllReports')->name('admin.all.reports'); 
     });
 });
 // End Admin Group Middleware 

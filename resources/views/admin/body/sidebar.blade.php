@@ -136,6 +136,19 @@
 
         <li>
           <a href="javascript: void(0);" class="has-arrow">
+            <i class="bx bx-image"></i>
+            <span data-key="t-apps">Manage Reports</span>
+          </a>
+          <ul class="sub-menu" aria-expanded="false">
+            <li>
+              <a href="{{ route('admin.all.reports') }}" data-key="t-alerts">All Reports</a>
+            </li>
+
+          </ul>
+        </li>
+
+        <li>
+          <a href="javascript: void(0);" class="has-arrow">
             <i data-feather="users"></i>
             <span data-key="t-authentication">Authentication</span>
           </a>
