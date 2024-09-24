@@ -139,9 +139,11 @@ Route::middleware('admin')->group(function () {
         Route::get('/processing_to_deliverd/{id}', 'ProcessingToDiliverd')->name('processing_to_deliverd');
     });
 
-    Route::controller(AdminReportController::class)->group(function(){
+    Route::controller(AdminReportController::class)->group(function () {
         Route::get('/admin/all/reports', 'AminAllReports')->name('admin.all.reports');
         Route::post('/admin/search/bydate', 'AminSearchByDate')->name('admin.search.bydate');
+        Route::post('/admin/search/bymonth', 'AminSearchByMonth')->name('admin.search.bymonth');
+        Route::post('/admin/search/byyear', 'AminSearchByYear')->name('admin.search.byyear');
     });
 });
 // End Admin Group Middleware 

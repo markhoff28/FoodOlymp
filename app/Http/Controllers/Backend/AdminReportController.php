@@ -4,12 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use App\Models\Product;
-use App\Models\Coupon;
 use App\Models\Order;
-use App\Models\OrderItem;
-use Carbon\Carbon;
 use DateTime;
 
 class AdminReportController extends Controller
@@ -26,5 +21,20 @@ class AdminReportController extends Controller
 
         $orderDate = Order::where('order_date', $formatDate)->latest()->get();
         return view('admin.backend.report.search_by_date', compact('orderDate', 'formatDate'));
+    } // End Method
+
+    public function AminSearchByMonth(Request $request)
+    {
+        $month = $request->month;
+        $years = $request->year_name;
+        $orderMonth = Order::where('order_month', $month)->where('order_year', $years)->latest()->get();
+        return view('admin.backend.report.search_by_month', compact('orderMonth', 'month', 'years'));
+    } // End Method 
+    
+    public function AminSearchByYear(Request $request)
+    {
+        $years = $request->year;
+        $orderYear = Order::where('order_year', $years)->latest()->get();
+        return view('admin.backend.report.search_by_year', compact('orderYear', 'years'));
     } // End Method
 }
