@@ -116,6 +116,19 @@ $status = $client->status;
           </ul>
         </li>
 
+        <li>
+          <a href="javascript: void(0);" class="has-arrow">
+            <i class="bx bx-line-chart"></i>
+            <span data-key="t-apps">Manage Reports</span>
+          </a>
+          <ul class="sub-menu" aria-expanded="false">
+            <li>
+              <a href="{{ route('client.all.reports') }}" data-key="t-alerts">All Reports</a>
+            </li>
+
+          </ul>
+        </li>
+
         @else
 
         @endif

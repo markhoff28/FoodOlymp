@@ -21,6 +21,7 @@ use App\Http\Controllers\Client\Backend\CouponController;
 use App\Http\Controllers\Client\Backend\GalleryController;
 use App\Http\Controllers\Client\Backend\MenuController;
 use App\Http\Controllers\Client\Backend\ProductController;
+use App\Http\Controllers\Client\Backend\ReportController;
 
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\CheckoutController;
@@ -213,6 +214,13 @@ Route::middleware('client', 'status')->group(function () {
     Route::controller(ClientOrderController::class)->group(function () {
         Route::get('/all/client/orders', 'AllClientOrders')->name('all.client.orders');
         Route::get('/client/order/details/{id}', 'ClientOrderDetails')->name('client.order.details');
+    });
+
+    Route::controller(ReportController::class)->group(function(){
+        Route::get('/client/all/reports', 'ClientAllReports')->name('client.all.reports'); 
+        Route::post('/admin/search/bydate', 'AminSearchByDate')->name('admin.search.bydate');
+        Route::post('/admin/search/bymonth', 'AminSearchByMonth')->name('admin.search.bymonth');
+        Route::post('/admin/search/byyear', 'AminSearchByYear')->name('admin.search.byyear');
     });
 });
 // End Client Group Group Middleware
