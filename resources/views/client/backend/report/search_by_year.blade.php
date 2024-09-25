@@ -6,7 +6,7 @@
     <div class="row">
       <div class="col-12">
         <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-          <h4 class="mb-sm-0 font-size-18">All Search By Date Order</h4>
+          <h4 class="mb-sm-0 font-size-18">All Search By Year Order</h4>
           <div class="page-title-right">
             <ol class="breadcrumb m-0">
               <li class="breadcrumb-item"><a href="{{ route('client.dashboard') }}">Dashboard</a></li>
@@ -22,7 +22,7 @@
         <div class="card">
 
           <div class="card-body">
-            <h3 class="text-danger">Search By Date: {{ $formatDate }}</h3>
+            <h3 class="text-danger">Search By Year {{ $years }}</h3>
             <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100">
               <thead>
                 <tr>
@@ -64,6 +64,5 @@
 
   </div> <!-- container-fluid -->
 </div>
-
 
 @endsection
