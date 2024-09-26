@@ -12,7 +12,7 @@
 
           <div class="page-title-right">
             <ol class="breadcrumb m-0">
-
+              <li class="breadcrumb-item"><a href="{{ route('client.dashboard') }}">Dashboard</a></li>
             </ol>
           </div>
 

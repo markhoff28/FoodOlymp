@@ -9,7 +9,8 @@
           <h4 class="mb-sm-0 font-size-18">All Search By Date Order</h4>
           <div class="page-title-right">
             <ol class="breadcrumb m-0">
-
+              <li class="breadcrumb-item"><a href="{{ route('client.dashboard') }}">Dashboard</a></li>
+              <li class="breadcrumb-item"><a href="{{ route('admin.all.reports') }}">Report Overview</a></li>
             </ol>
           </div>
         </div>
