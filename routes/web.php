@@ -26,6 +26,7 @@ use App\Http\Controllers\Client\Backend\ReportController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\IndexController;
+use App\Http\Controllers\Frontend\ReviewController;
 use App\Http\Controllers\Frontend\UserController;
 use App\Http\Controllers\Frontend\WishlistController;
 use App\Http\Controllers\Frontend\User\UserChangePasswordController;
@@ -259,4 +260,9 @@ Route::get('/checkout', [CheckoutController::class, 'ShopCheckout'])->name('chec
 
 Route::controller(CashOnDeliveryController::class)->group(function () {
     Route::post('/cash_order', 'CashOrder')->name('cash_order');
+});
+
+// Review
+Route::controller(ReviewController::class)->group(function(){
+    Route::post('/store/review', 'StoreReview')->name('store.review');  
 });

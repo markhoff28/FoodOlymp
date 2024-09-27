@@ -355,9 +355,16 @@ $coupons = App\Models\Coupon::where('client_id',$client->id)->where('status','1'
               <div class="bg-white rounded shadow-sm p-4 mb-4 restaurant-detailed-ratings-and-reviews">
                 <a href="#" class="btn btn-outline-primary btn-sm float-right">Top Rated</a>
                 <h5 class="mb-1">All Ratings and Reviews</h5>
+
+                @php
+                $reviews = App\Models\Review::where('client_id',$client->id)->where('status',1)->latest()->limit(5)->get();
+                @endphp
+
+                @foreach ($reviews as $review)
+
                 <div class="reviews-members pt-4 pb-4">
                   <div class="media">
-                    <a href="#"><img alt="Generic placeholder image" src="{{ asset('frontend/img/user/1.png') }}" class="mr-3 rounded-pill"></a>
+                    <a href="#"><img alt="Generic placeholder image" src="{{ (!empty($review->user->photo)) ? url('upload/user_images/'.$review->user->photo) : url('upload/no_image.jpg') }}" class="mr-3 rounded-pill"></a>
                     <div class="media-body">
                       <div class="reviews-members-header">
                         <span class="star-rating float-right">
@@ -367,11 +374,11 @@ $coupons = App\Models\Coupon::where('client_id',$client->id)->where('status','1'
                           <a href="#"><i class="icofont-ui-rating active"></i></a>
                           <a href="#"><i class="icofont-ui-rating"></i></a>
                         </span>
-                        <h6 class="mb-1"><a class="text-black" href="#">Singh Osahan</a></h6>
-                        <p class="text-gray">Tue, 20 Mar 2020</p>
+                        <h6 class="mb-1"><a class="text-black" href="#">{{ $review->user->name }}</a></h6>
+                        <p class="text-gray"> {{ Carbon\Carbon::parse($review->created_at)->diffForHumans() }} </p>
                       </div>
                       <div class="reviews-members-body">
-                        <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections </p>
+                        <p> {{ $review->comment }} </p>
                       </div>
                       <div class="reviews-members-footer">
                         <a class="total-like" href="#"><i class="icofont-thumbs-up"></i> 856M</a> <a class="total-like" href="#"><i class="icofont-thumbs-down"></i> 158K</a>
@@ -380,6 +387,7 @@ $coupons = App\Models\Coupon::where('client_id',$client->id)->where('status','1'
                     </div>
                   </div>
                 </div>
+                @endforeach
                 <hr>
 
                 <hr>
@@ -406,7 +414,7 @@ $coupons = App\Models\Coupon::where('client_id',$client->id)->where('status','1'
                 </style>
                 <h5 class="mb-4">Leave Comment</h5>
                 <p class="mb-2">Rate the Place</p>
-                <form method="post" action="#">
+                <form method="post" action="{{ route('store.review') }}">
                   @csrf
                   <input type="hidden" name="client_id" value="{{ $client->id }}">
 
