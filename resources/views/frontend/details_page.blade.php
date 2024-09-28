@@ -286,68 +286,34 @@ $coupons = App\Models\Coupon::where('client_id',$client->id)->where('status','1'
                 <h5 class="mb-4">Ratings and Reviews</h5>
                 <div class="graph-star-rating-header">
                   <div class="star-rating">
-                    <a href="#"><i class="icofont-ui-rating active"></i></a>
-                    <a href="#"><i class="icofont-ui-rating active"></i></a>
-                    <a href="#"><i class="icofont-ui-rating active"></i></a>
-                    <a href="#"><i class="icofont-ui-rating active"></i></a>
-                    <a href="#"><i class="icofont-ui-rating"></i></a> <b class="text-black ml-2">334</b>
+                    @for ($i = 1; $i <= 5; $i++)
+                      <a href="#"><i class="icofont-ui-rating {{ $i <= round($roundedAverageRating) ? 'active' : ''}}"></i></a>
+                      @endfor
+                      <b class="text-black ml-2">{{ $totalReviews }}</b>
                   </div>
-                  <p class="text-black mb-4 mt-2">Rated 3.5 out of 5</p>
+                  <p class="text-black mb-4 mt-2">Rated {{$roundedAverageRating}} out of 5</p>
                 </div>
+
                 <div class="graph-star-rating-body">
+
+                  @foreach ($ratingCounts as $star => $count)
                   <div class="rating-list">
                     <div class="rating-list-left text-black">
-                      5 Star
+                      {{ $star }} Star
                     </div>
                     <div class="rating-list-center">
                       <div class="progress">
-                        <div style="width: 56%" aria-valuemax="5" aria-valuemin="0" aria-valuenow="5" role="progressbar" class="progress-bar bg-primary">
-                          <span class="sr-only">80% Complete (danger)</span>
+                        <div style="width: {{ $ratingPercentages[$star] }}%" aria-valuemax="5" aria-valuemin="0" aria-valuenow="5" role="progressbar" class="progress-bar bg-primary">
+                          <span class="sr-only">{{ $ratingPercentages[$star] }}% Complete (danger)</span>
                         </div>
                       </div>
                     </div>
-                    <div class="rating-list-right text-black">56%</div>
+                    <div class="rating-list-right text-black">{{ number_format($ratingPercentages[$star],2) }}%</div>
                   </div>
-                  <div class="rating-list">
-                    <div class="rating-list-left text-black">
-                      4 Star
-                    </div>
-                    <div class="rating-list-center">
-                      <div class="progress">
-                        <div style="width: 23%" aria-valuemax="5" aria-valuemin="0" aria-valuenow="5" role="progressbar" class="progress-bar bg-primary">
-                          <span class="sr-only">80% Complete (danger)</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="rating-list-right text-black">23%</div>
-                  </div>
-                  <div class="rating-list">
-                    <div class="rating-list-left text-black">
-                      3 Star
-                    </div>
-                    <div class="rating-list-center">
-                      <div class="progress">
-                        <div style="width: 11%" aria-valuemax="5" aria-valuemin="0" aria-valuenow="5" role="progressbar" class="progress-bar bg-primary">
-                          <span class="sr-only">80% Complete (danger)</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="rating-list-right text-black">11%</div>
-                  </div>
-                  <div class="rating-list">
-                    <div class="rating-list-left text-black">
-                      2 Star
-                    </div>
-                    <div class="rating-list-center">
-                      <div class="progress">
-                        <div style="width: 2%" aria-valuemax="5" aria-valuemin="0" aria-valuenow="5" role="progressbar" class="progress-bar bg-primary">
-                          <span class="sr-only">80% Complete (danger)</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="rating-list-right text-black">02%</div>
-                  </div>
+                  @endforeach
+
                 </div>
+
                 <div class="graph-star-rating-footer text-center mt-3 mb-3">
                   <button type="button" class="btn btn-outline-primary btn-sm">Rate and Review</button>
                 </div>
@@ -408,6 +374,7 @@ $coupons = App\Models\Coupon::where('client_id',$client->id)->where('status','1'
                 <hr>
                 <a class="text-center w-100 d-block mt-4 font-weight-bold" href="#">See All Reviews</a>
               </div>
+
               <div class="bg-white rounded shadow-sm p-4 mb-5 rating-review-select-page">
                 @guest
                 <p><b>For Add Resturant Review. You need to login first <a href="{{ route('login') }}"> Login Here </a> </b></p>
@@ -427,6 +394,7 @@ $coupons = App\Models\Coupon::where('client_id',$client->id)->where('status','1'
                     color: #dd646e;
                   }
                 </style>
+
                 <h5 class="mb-4">Leave Comment</h5>
                 <p class="mb-2">Rate the Place</p>
                 <form method="post" action="{{ route('store.review') }}">
@@ -476,13 +444,14 @@ $coupons = App\Models\Coupon::where('client_id',$client->id)->where('status','1'
             <img class="img-fluid float-left mr-3" src="{{ asset('frontend/img/earn-score-icon.png') }}">
             <h6 class="pt-0 text-primary mb-1 font-weight-bold">OFFER</h6>
 
-            <pre>{{ print_r(Session::get('coupon'), true) }}</pre>
+            {{-- <pre>{{ print_r(Session::get('coupon'), true) }}</pre> --}}
 
             @if ($coupon == NULL)
             <p class="mb-0">No Coupon is Available </p>
             @else
             <p class="mb-0">{{ $coupon->discount }}% off on orders above $99 | Use coupon <span class="text-danger font-weight-bold">{{ $coupon->coupon_name }}</span></p>
             @endif
+
             <div class="icon-overlap">
               <i class="icofont-sale-discount"></i>
             </div>
