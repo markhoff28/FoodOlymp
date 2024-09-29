@@ -23,6 +23,7 @@ use App\Http\Controllers\Client\Backend\GalleryController;
 use App\Http\Controllers\Client\Backend\MenuController;
 use App\Http\Controllers\Client\Backend\ProductController;
 use App\Http\Controllers\Client\Backend\ReportController;
+use App\Http\Controllers\Client\Backend\RestaurantReviewController;
 
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\CheckoutController;
@@ -229,6 +230,10 @@ Route::middleware('client', 'status')->group(function () {
         Route::post('/client/search/bydate', 'ClientSearchByDate')->name('client.search.bydate');
         Route::post('/client/search/bymonth', 'ClientSearchByMonth')->name('client.search.bymonth');
         Route::post('/client/search/byyear', 'ClientSearchByYear')->name('client.search.byyear');
+    });
+
+    Route::controller(RestaurantReviewController::class)->group(function () {
+        Route::get('/client/all/reviews', 'ClientAllReviews')->name('client.all.reviews');
     });
 });
 // End Client Group Group Middleware
