@@ -6,7 +6,7 @@
     <div id="sidebar-menu">
       <!-- Left Menu Start -->
       <ul class="metismenu list-unstyled" id="side-menu">
-        <li class="menu-title" data-key="t-menu">Menu</li>
+        <li class="menu-title" data-key="t-menu">Your Backoffice</li>
 
         <li>
           <a href="{{ route('admin.dashboard') }}">
@@ -144,6 +144,21 @@
               <a href="{{ route('admin.all.reports') }}" data-key="t-alerts">All Reports</a>
             </li>
 
+          </ul>
+        </li>
+
+        <li>
+          <a href="javascript: void(0);" class="has-arrow">
+            <i class="bx bx-edit"></i>
+            <span data-key="t-apps">Manage Review</span>
+          </a>
+          <ul class="sub-menu" aria-expanded="false">
+            <li>
+              <a href="{{ route('admin.pending.review') }}" data-key="t-lightbox">Pending Review</a>
+            </li>
+            <li>
+              <a href="{{ route('admin.approve.review') }}" data-key="t-range-slider">Approve Review</a>
+            </li>
           </ul>
         </li>
 

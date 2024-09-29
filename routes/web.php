@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\AdminChangePasswordController;
 
 use App\Http\Controllers\Backend\AdminProductController;
 use App\Http\Controllers\Backend\AdminReportController;
+use App\Http\Controllers\Backend\AdminReviewController;
 use App\Http\Controllers\Backend\BannerController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\CityController;
@@ -147,6 +148,11 @@ Route::middleware('admin')->group(function () {
         Route::post('/admin/search/bymonth', 'AminSearchByMonth')->name('admin.search.bymonth');
         Route::post('/admin/search/byyear', 'AminSearchByYear')->name('admin.search.byyear');
     });
+
+    Route::controller(AdminReviewController::class)->group(function () {
+        Route::get('/admin/pending/review', 'AdminPendingReview')->name('admin.pending.review');
+        Route::get('/admin/approve/review', 'AdminApproveReview')->name('admin.approve.review');
+    });
 });
 // End Admin Group Middleware 
 
@@ -263,6 +269,6 @@ Route::controller(CashOnDeliveryController::class)->group(function () {
 });
 
 // Review
-Route::controller(ReviewController::class)->group(function(){
-    Route::post('/store/review', 'StoreReview')->name('store.review');  
+Route::controller(ReviewController::class)->group(function () {
+    Route::post('/store/review', 'StoreReview')->name('store.review');
 });
