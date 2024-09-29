@@ -79,7 +79,6 @@
     $('.toggle-class').change(function() {
       var status = $(this).prop('checked') == true ? 1 : 0;
       var review_id = $(this).data('id');
-      console.log('hallo')
 
       $.ajax({
         type: "GET",
