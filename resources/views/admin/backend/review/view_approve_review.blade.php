@@ -2,6 +2,7 @@
 @section('admin')
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+
 <div class="page-content">
   <div class="container-fluid">
     <!-- start page title -->
@@ -14,11 +15,13 @@
       </div>
     </div>
     <!-- end page title -->
+
     <div class="row">
       <div class="col-12">
         <div class="card">
 
           <div class="card-body">
+
             <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100">
               <thead>
                 <tr>
@@ -31,6 +34,7 @@
                   <th>Action </th>
                 </tr>
               </thead>
+
               <tbody>
                 @foreach ($approveReview as $key=> $item)
                 <tr>
@@ -53,35 +57,40 @@
 
                   <td>
                     <input data-id="{{$item->id}}" class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Active" data-off="Inactive" {{ $item->status ? 'checked' : '' }}>
+
                   </td>
                 </tr>
                 @endforeach
 
               </tbody>
             </table>
+
           </div>
         </div>
       </div> <!-- end col -->
     </div> <!-- end row -->
 
+
   </div> <!-- container-fluid -->
 </div>
+
 <script type="text/javascript">
   $(function() {
     $('.toggle-class').change(function() {
       var status = $(this).prop('checked') == true ? 1 : 0;
-      var client_id = $(this).data('id');
+      var review_id = $(this).data('id');
+      console.log('hallo')
 
       $.ajax({
         type: "GET",
         dataType: "json",
-        url: '/clientchangeStatus',
+        url: '/reviewchangeStatus',
         data: {
           'status': status,
-          'client_id': client_id
+          'review_id': review_id
         },
         success: function(data) {
-          // console.log(data.success)
+          console.log(data.success)
 
           // Start Message 
 
