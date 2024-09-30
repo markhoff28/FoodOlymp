@@ -41,6 +41,7 @@
                   <th>Discount</th>
                   <th>Status</th>
                   <th>Action </th>
+                  <th>Activ Product </th>
                 </tr>
               </thead>
 
@@ -75,7 +76,12 @@
 
                   <td><a href="{{ route('admin.edit.product',$item->id) }}" class="btn btn-info waves-effect waves-light"> <i class="fas fa-edit"></i> </a>
                     <a href="{{ route('admin.delete.product',$item->id) }}" class="btn btn-danger waves-effect waves-light" id="delete"><i class="fas fa-trash"></i></a>
-                    <input data-id="{{$item->id}}" class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Active" data-off="Inactive" {{ $item->status ? 'checked' : '' }}>
+                  </td>
+                  <td>
+                    <div class="form-check-danger form-check form-switch">
+                      <input class="form-check-input status-toggle large-checkbox" type="checkbox" id="flexSwitchCheckCheckedDanger" data-id="{{$item->id}}" {{ $item->status ? 'checked' : '' }}>
+                      <label class="form-check-label" for="flexSwitchCheckCheckedDanger"> </label>
+                    </div>
 
                   </td>
                 </tr>
@@ -95,7 +101,7 @@
 
 <script type="text/javascript">
   $(function() {
-    $('.toggle-class').change(function() {
+    $('.status-toggle').change(function() {
       var status = $(this).prop('checked') == true ? 1 : 0;
       var product_id = $(this).data('id');
 
@@ -125,6 +131,10 @@
               type: 'success',
               title: data.success,
             })
+
+            setTimeout(() => {
+              location.reload();
+            }, 1750);
 
           } else {
 

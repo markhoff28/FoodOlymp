@@ -56,8 +56,10 @@
                   </td>
 
                   <td>
-                    <input data-id="{{$item->id}}" class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Active" data-off="Inactive" {{ $item->status ? 'checked' : '' }}>
-
+                    <div class="form-check-danger form-check form-switch">
+                      <input class="form-check-input status-toggle large-checkbox" type="checkbox" id="flexSwitchCheckCheckedDanger" data-id="{{$item->id}}" {{ $item->status ? 'checked' : '' }}>
+                      <label class="form-check-label" for="flexSwitchCheckCheckedDanger"> </label>
+                    </div>
                   </td>
                 </tr>
                 @endforeach
@@ -76,7 +78,7 @@
 
 <script type="text/javascript">
   $(function() {
-    $('.toggle-class').change(function() {
+    $('.status-toggle').change(function() {
       var status = $(this).prop('checked') == true ? 1 : 0;
       var client_id = $(this).data('id');
 
