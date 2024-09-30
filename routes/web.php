@@ -27,6 +27,7 @@ use App\Http\Controllers\Client\Backend\RestaurantReviewController;
 
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\CheckoutController;
+use App\Http\Controllers\Frontend\FilterController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\ReviewController;
 use App\Http\Controllers\Frontend\UserController;
@@ -277,4 +278,9 @@ Route::controller(CashOnDeliveryController::class)->group(function () {
 // Review
 Route::controller(ReviewController::class)->group(function () {
     Route::post('/store/review', 'StoreReview')->name('store.review');
+});
+
+// Filter
+Route::controller(FilterController::class)->group(function () {
+    Route::get('/list/restaurant', 'ListRestaurant')->name('list.restaurant');
 });
