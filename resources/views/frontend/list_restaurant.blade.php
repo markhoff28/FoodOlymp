@@ -143,14 +143,6 @@
             </div>
           </div>
 
-
-
-
-
-
-
-
-
         </div>
 
       </div>
@@ -194,9 +186,30 @@
 
 <script>
   $(document).ready(function() {
-    $('.filter-checkbox"').on('change', function() {
-
-    })
+    $('.filter-checkbox').on('change', function() {
+      var filters = {
+        categories: [],
+        citits: [],
+        menus: []
+      };
+      //console.log(filters);
+      $('.filter-checkbox:checked').each(function() {
+        var type = $(this).data('type');
+        var id = $(this).data('id');
+        if (!filters[type + 's']) {
+          filters[type + 's'] = [];
+        }
+        filters[type + 's'].push(id);
+      });
+      $.ajax({
+        url: '{{ route('filter.products') }}',
+        method: 'GET',
+        data: filters,
+        success: function(response) {
+          $('#product-list').html(response)
+        }
+      });
+    });
   })
 </script>
 
