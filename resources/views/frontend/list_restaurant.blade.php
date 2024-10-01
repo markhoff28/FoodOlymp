@@ -25,13 +25,13 @@
         </h4>
       </div>
     </div>
+
     <div class="row">
       <div class="col-md-3">
         <div class="filters shadow-sm rounded bg-white mb-4">
           <div class="filters-header border-bottom pl-4 pr-4 pt-3 pb-3">
             <h5 class="m-0">Filter By</h5>
           </div>
-
           @php
           $categories = App\Models\Category::orderBy('id','desc')->limit(10)->get();
           @endphp
@@ -45,8 +45,6 @@
                     </a>
                   </h6>
                 </div>
-
-
                 <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
                   <div class="filters-card-body card-shop-filters">
                     @foreach ($categories as $category)
@@ -64,8 +62,6 @@
               </div>
             </div>
           </div>
-
-
 
           @php
           $cities = App\Models\City::orderBy('id','desc')->limit(10)->get();
@@ -94,13 +90,9 @@
                     @endforeach
                   </div>
                 </div>
-
-
               </div>
             </div>
           </div>
-
-
 
           @php
           $menus = App\Models\Menu::orderBy('id','desc')->limit(10)->get();
@@ -115,8 +107,6 @@
                     </a>
                   </h6>
                 </div>
-
-
                 <div id="collapseOnemenu" class="collapse show" aria-labelledby="headingOnemenu" data-parent="#accordion">
                   <div class="filters-card-body card-shop-filters">
                     @foreach ($menus as $menu)
@@ -131,19 +121,15 @@
                     @endforeach
                   </div>
                 </div>
-
-
               </div>
             </div>
           </div>
-
         </div>
 
       </div>
       <div class="col-md-9">
 
         <div class="row" id="product-list">
-
           @foreach ($products as $product)
           <div class="col-md-4 col-sm-6 mb-4 pb-2">
             <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
@@ -168,9 +154,6 @@
             </div>
           </div>
           @endforeach
-
-
-
         </div>
       </div>
     </div>
