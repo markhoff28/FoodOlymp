@@ -61,10 +61,6 @@
                     @endforeach
                   </div>
                 </div>
-
-
-
-
               </div>
             </div>
           </div>
@@ -84,8 +80,6 @@
                     </a>
                   </h6>
                 </div>
-
-
                 <div id="collapseOnecity" class="collapse show" aria-labelledby="headingOnecity" data-parent="#accordion">
                   <div class="filters-card-body card-shop-filters">
                     @foreach ($cities as $city)
