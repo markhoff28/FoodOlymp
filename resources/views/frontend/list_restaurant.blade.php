@@ -3,7 +3,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 <section class="breadcrumb-osahan pt-5 pb-5 bg-dark position-relative text-center">
-  <h1 class="text-white">Offers Near You</h1>
+  <h1 class="text-white">Restaurants Near You</h1>
   <h6 class="text-white-50">Best deals at your favourite restaurants</h6>
 </section>
 <section class="section pt-5 pb-5 products-listing">
