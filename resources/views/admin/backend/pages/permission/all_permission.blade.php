@@ -9,7 +9,7 @@
           <h4 class="mb-sm-0 font-size-18">All Permission</h4>
           <div class="page-title-right">
             <ol class="breadcrumb m-0">
-              <a href="{{ route('add.category') }}" class="btn btn-primary waves-effect waves-light">Add Permission</a>
+              <a href="{{ route('add.permission') }}" class="btn btn-primary waves-effect waves-light">Add Permission</a>
             </ol>
           </div>
         </div>
@@ -38,8 +38,8 @@
                   <td>{{ $item->name }}</td>
                   <td>{{ $item->group_name }}</td>
                   <td>{{ $item->guard_name }}</td>
-                  <td><a href="{{ route('edit.category',$item->id) }}" class="btn btn-info waves-effect waves-light">Edit</a>
-                    <a href="{{ route('delete.category',$item->id) }}" class="btn btn-danger waves-effect waves-light" id="delete">Delete</a>
+                  <td><a href="{{ route('edit.permission',$item->id) }}" class="btn btn-info waves-effect waves-light">Edit</a>
+                    <a href="{{ route('delete.permission',$item->id) }}" class="btn btn-danger waves-effect waves-light" id="delete">Delete</a>
                   </td>
                 </tr>
                 @endforeach
