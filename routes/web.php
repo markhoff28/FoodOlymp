@@ -37,6 +37,7 @@ use App\Http\Controllers\Frontend\User\UserOrderController;
 use App\Http\Controllers\Frontend\User\UserWishlistController;
 
 use App\Http\Controllers\Payment\CashOnDeliveryController;
+use App\Http\Controllers\Payment\StripeController;
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ClientController;
@@ -273,6 +274,10 @@ Route::get('/checkout', [CheckoutController::class, 'ShopCheckout'])->name('chec
 
 Route::controller(CashOnDeliveryController::class)->group(function () {
     Route::post('/cash_order', 'CashOrder')->name('cash_order');
+});
+
+Route::controller(StripeController::class)->group(function () {
+    Route::post('/stripe_order', 'StripeOrder')->name('stripe_order');
 });
 
 // Review
