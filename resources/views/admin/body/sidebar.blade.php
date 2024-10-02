@@ -162,6 +162,20 @@
           </ul>
         </li>
 
+        <li class="menu-title mt-2" data-key="t-components">Role & Permission</li>
+
+        <li>
+          <a href="javascript: void(0);" class="has-arrow">
+            <i class="bx bx-user-check"></i>
+            <span data-key="t-ui-elements">Role & Permission</span>
+          </a>
+          <ul class="sub-menu" aria-expanded="false">
+            <li><a href="{{ route('all.permission') }}" data-key="t-lightbox">All Permission</a></li>
+            <li><a href="{{ route('admin.approve.review') }}" data-key="t-range-slider">Approve Review</a></li>
+
+          </ul>
+        </li>
+
         <li>
           <a href="javascript: void(0);" class="has-arrow">
             <i data-feather="users"></i>

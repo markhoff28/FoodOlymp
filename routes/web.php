@@ -14,6 +14,7 @@ use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\CityController;
 use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Backend\RestaurantController;
+use App\Http\Controllers\Backend\PermissionController;
 
 use App\Http\Controllers\Client\ClientProfilController;
 use App\Http\Controllers\Client\ClientChangePasswordController;
@@ -156,6 +157,11 @@ Route::middleware('admin')->group(function () {
         Route::get('/admin/pending/review', 'AdminPendingReview')->name('admin.pending.review');
         Route::get('/admin/approve/review', 'AdminApproveReview')->name('admin.approve.review');
         Route::get('/reviewchangeStatus', 'ReviewChangeStatus');
+    });
+
+    // Role and Permissions All Route 
+    Route::controller(PermissionController::class)->group(function () {
+        Route::get('/all/permission', 'AllPermission')->name('all.permission');
     });
 });
 // End Admin Group Middleware 
