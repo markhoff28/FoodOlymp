@@ -14,6 +14,7 @@ use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\CityController;
 use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Backend\RestaurantController;
+use App\Http\Controllers\Backend\RolePermissionController;
 use App\Http\Controllers\Backend\RoleController;
 use App\Http\Controllers\Backend\PermissionController;
 
@@ -181,6 +182,16 @@ Route::middleware('admin')->group(function () {
         Route::get('/edit/roles/{id}', 'EditRoles')->name('edit.roles');
         Route::post('/update/roles', 'UpdateRoles')->name('update.roles');
         Route::get('/delete/roles/{id}', 'DeleteRoles')->name('delete.roles');
+    });
+
+    // Role and Permissions All Route 
+    Route::controller(RolePermissionController::class)->group(function () {
+        Route::get('/all/roles/permission', 'AllRolesPermission')->name('all.roles.permission');
+        Route::get('/add/roles/permission', 'AddRolesPermission')->name('add.roles.permission');
+        Route::post('/role/permission/store', 'RolePermissionStore')->name('role.permission.store');
+        Route::get('/admin/edit/roles/{id}', 'AdminEditRoles')->name('admin.edit.roles');
+        Route::post('/admin/roles/update/{id}', 'AdminUpdateRoles')->name('admin.roles.update');
+        Route::get('/admin/delete/roles/{id}', 'AdminDeleteRoles')->name('admin.delete.roles');
     });
 });
 // End Admin Group Middleware 
