@@ -12,7 +12,7 @@
             <ol class="breadcrumb m-0">
 
               <li class="breadcrumb-item active">
-                <a href="{{ route('add.permission') }}" class="btn btn-danger waves-effect waves-light">Export</a>
+                <a href="{{ route('export') }}" class="btn btn-danger waves-effect waves-light">Export</a>
               </li>
             </ol>
           </div>
@@ -24,7 +24,7 @@
       <div class="col-xl-9 col-lg-8">
         <div class="card">
           <div class="card-body p-4">
-            <form id="myForm" action="{{ route('store.permission') }}" method="post" enctype="multipart/form-data">
+            <form id="myForm" action="{{ route('import') }}" method="post" enctype="multipart/form-data">
               @csrf
 
               <div class="row">

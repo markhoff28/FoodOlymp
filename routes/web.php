@@ -168,6 +168,8 @@ Route::middleware('admin')->group(function () {
         Route::post('/update/permission', 'UpdatePermission')->name('update.permission');
         Route::get('/delete/permission/{id}', 'DeletePermission')->name('delete.permission');
         Route::get('/import/permission', 'ImportPermission')->name('import.permission');
+        Route::get('/export', 'Export')->name('export');
+        Route::post('/import', 'Import')->name('import');
     });
 });
 // End Admin Group Middleware 
