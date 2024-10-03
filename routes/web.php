@@ -14,6 +14,7 @@ use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\CityController;
 use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Backend\RestaurantController;
+use App\Http\Controllers\Backend\RoleController;
 use App\Http\Controllers\Backend\PermissionController;
 
 use App\Http\Controllers\Client\ClientProfilController;
@@ -170,6 +171,16 @@ Route::middleware('admin')->group(function () {
         Route::get('/import/permission', 'ImportPermission')->name('import.permission');
         Route::get('/export', 'Export')->name('export');
         Route::post('/import', 'Import')->name('import');
+    });
+
+    // Role All Route 
+    Route::controller(RoleController::class)->group(function () {
+        Route::get('/all/roles', 'AllRoles')->name('all.roles');
+        Route::get('/add/roles', 'AddRoles')->name('add.roles');
+        Route::post('/store/roles', 'StoreRoles')->name('store.roles');
+        Route::get('/edit/roles/{id}', 'EditRoles')->name('edit.roles');
+        Route::post('/update/roles', 'UpdateRoles')->name('update.roles');
+        Route::get('/delete/roles/{id}', 'DeleteRoles')->name('delete.roles');
     });
 });
 // End Admin Group Middleware 
