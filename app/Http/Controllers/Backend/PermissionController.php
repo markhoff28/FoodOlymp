@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PermissionController extends Controller
 {
@@ -65,5 +66,11 @@ class PermissionController extends Controller
             'alert-type' => 'success'
         );
         return redirect()->back()->with($notification);
+    } // End Method
+
+    // Import Export
+    public function ImportPermission()
+    {
+        return view('admin.backend.pages.permission.import_permission');
     } // End Method
 }
