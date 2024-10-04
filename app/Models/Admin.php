@@ -51,11 +51,23 @@ class Admin extends Authenticatable
         return $permission_groups;
     } //End Method
 
-    public static function getpermissionByGroupName($group_name){
+    public static function getpermissionByGroupName($group_name)
+    {
         $permissions = DB::table('permissions')
-                            ->select('name','id')
-                            ->where('group_name',$group_name)
-                            ->get();
-                            return $permissions;
+            ->select('name', 'id')
+            ->where('group_name', $group_name)
+            ->get();
+        return $permissions;
+    } //End Method
+
+    public static function roleHasPermissions($role, $permissions)
+    {
+        $hasPermission = true;
+        foreach ($permissions as $key => $permission) {
+            if (!$role->hasPermissionTo($permission->name)) {
+                $hasPermission = false;
+            }
+            return $hasPermission;
+        }
     } //End Method
 }
