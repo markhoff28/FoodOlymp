@@ -180,6 +180,18 @@
 
         <li>
           <a href="javascript: void(0);" class="has-arrow">
+            <i class="bx bx-user-check"></i>
+            <span data-key="t-ui-elements">Manage Admin</span>
+          </a>
+          <ul class="sub-menu" aria-expanded="false">
+          <li><a href="{{ route('all.admin') }}" data-key="t-lightbox">All Admin</a></li>
+          <li><a href="{{ route('add.admin') }}" data-key="t-range-slider">Add Admin</a></li>
+
+          </ul>
+        </li>
+
+        <li>
+          <a href="javascript: void(0);" class="has-arrow">
             <i data-feather="users"></i>
             <span data-key="t-authentication">Authentication</span>
           </a>

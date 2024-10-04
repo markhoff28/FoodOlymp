@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\AdminChangePasswordController;
 use App\Http\Controllers\Backend\AdminProductController;
 use App\Http\Controllers\Backend\AdminReportController;
 use App\Http\Controllers\Backend\AdminReviewController;
+use App\Http\Controllers\Backend\AdminUserController;
 use App\Http\Controllers\Backend\BannerController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\CityController;
@@ -192,6 +193,16 @@ Route::middleware('admin')->group(function () {
         Route::get('/admin/edit/roles/{id}', 'AdminEditRoles')->name('admin.edit.roles');
         Route::post('/admin/roles/update/{id}', 'AdminUpdateRoles')->name('admin.roles.update');
         Route::get('/admin/delete/roles/{id}', 'AdminDeleteRoles')->name('admin.delete.roles');
+    });
+
+    // Admin User All Route 
+    Route::controller(AdminUserController::class)->group(function () {
+        Route::get('/all/admin', 'AllAdmin')->name('all.admin');
+        Route::get('/add/admin', 'AddAdmin')->name('add.admin');
+        Route::post('/store/admin', 'StoreAdmin')->name('store.admin');
+        Route::get('/edit/admin/{id}', 'EditAdmin')->name('edit.admin');
+        Route::post('/update/admin/{id}', 'UpdateAdmin')->name('update.admin');
+        Route::get('/delete/admin/{id}', 'DeleteAdmin')->name('delete.admin');
     });
 });
 // End Admin Group Middleware 
