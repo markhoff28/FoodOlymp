@@ -12,12 +12,13 @@
         <div class="page-title-box d-sm-flex align-items-center justify-content-between">
           <h4 class="mb-sm-0 font-size-18">All Product</h4>
 
+          @if (Auth::guard('admin')->user()->can('product.add'))
           <div class="page-title-right">
             <ol class="breadcrumb m-0">
               <a href="{{ route('admin.add.product') }}" class="btn btn-primary waves-effect waves-light">Add Product</a>
             </ol>
           </div>
-
+          @endif
         </div>
       </div>
     </div>
@@ -74,15 +75,21 @@
                     @endif
                   </td>
 
-                  <td><a href="{{ route('admin.edit.product',$item->id) }}" class="btn btn-info waves-effect waves-light"> <i class="fas fa-edit"></i> </a>
+                  <td>
+                    @if (Auth::guard('admin')->user()->can('product.edit'))
+                    <a href="{{ route('admin.edit.product',$item->id) }}" class="btn btn-info waves-effect waves-light"> <i class="fas fa-edit"></i> </a>
+                    @endif
+                    @if (Auth::guard('admin')->user()->can('product.delete'))
                     <a href="{{ route('admin.delete.product',$item->id) }}" class="btn btn-danger waves-effect waves-light" id="delete"><i class="fas fa-trash"></i></a>
+                    @endif
                   </td>
                   <td>
+                    @if (Auth::guard('admin')->user()->can('product.status'))
                     <div class="form-check-danger form-check form-switch">
                       <input class="form-check-input status-toggle large-checkbox" type="checkbox" id="flexSwitchCheckCheckedDanger" data-id="{{$item->id}}" {{ $item->status ? 'checked' : '' }}>
                       <label class="form-check-label" for="flexSwitchCheckCheckedDanger"> </label>
                     </div>
-
+                    @endif
                   </td>
                 </tr>
                 @endforeach

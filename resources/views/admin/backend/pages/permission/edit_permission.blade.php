@@ -45,6 +45,10 @@
                         <option value="Order" {{ $permission->group_name == 'Order' ? 'selected' : '' }}>Order</option>
                         <option value="Reports" {{ $permission->group_name == 'Reports' ? 'selected' : '' }}>Reports</option>
                         <option value="Review" {{ $permission->group_name == 'Review' ? 'selected' : '' }}>Review</option>
+                        <option value="Role and Permission" {{ $permission->group_name == 'Role and Permission' ? 'selected' : '' }}>Role and Permission</option>
+                        <option value="Content Management User" {{ $permission->group_name == 'Content Management User' ? 'selected' : '' }}>Content Management User</option>
+                        <option value="Business Intelligence User"{{ $permission->group_name == 'Business Intelligence User' ? 'selected' : '' }}>Business Intelligence User</option>
+                        <option value="All User"{{ $permission->group_name == 'All User' ? 'selected' : '' }}>All User</option>
                       </select>
                     </div>
                     <div class="mt-4">

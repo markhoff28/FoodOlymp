@@ -15,46 +15,78 @@
           </a>
         </li>
 
+        @if (Auth::guard('admin')->user()->can('category.menu'))
         <li>
           <a href="javascript: void(0);" class="has-arrow">
             <i class="bx bx-category"></i>
             <span data-key="t-apps">Category</span>
           </a>
           <ul class="sub-menu" aria-expanded="false">
+            @if (Auth::guard('admin')->user()->can('category.all'))
             <li>
               <a href="{{ route('all.category') }}">
                 <span data-key="t-calendar">All Category</span>
               </a>
             </li>
-
+            @endif
+            @if (Auth::guard('admin')->user()->can('category.add'))
             <li>
               <a href="{{ route('add.category') }}">
                 <span data-key="t-chat">Add Category</span>
               </a>
             </li>
+            @endif
           </ul>
         </li>
+        @endif
 
+        @if (Auth::guard('admin')->user()->can('product.menu'))
         <li>
           <a href="javascript: void(0);" class="has-arrow">
             <i class="bx bx-category"></i>
             <span data-key="t-apps">Manage Product</span>
           </a>
           <ul class="sub-menu" aria-expanded="false">
+            @if (Auth::guard('admin')->user()->can('product.all'))
             <li>
               <a href="{{ route('admin.all.product') }}">
                 <span data-key="t-calendar">All Product</span>
               </a>
             </li>
-
+            @endif
+            @if (Auth::guard('admin')->user()->can('product.add'))
             <li>
               <a href="{{ route('admin.add.product') }}">
                 <span data-key="t-chat">Add Product</span>
               </a>
             </li>
+            @endif
           </ul>
         </li>
+        @endif
 
+        @if (Auth::guard('admin')->user()->can('restaurant.menu'))
+        <li>
+          <a href="javascript: void(0);" class="has-arrow">
+            <i class="bx bx-restaurant"></i>
+            <span data-key="t-apps">Manage Restaurant</span>
+          </a>
+          <ul class="sub-menu" aria-expanded="false">
+            <li>
+              <a href="{{ route('pending.restaurant') }}">
+                <span data-key="t-calendar">Pending Restaurant </span>
+              </a>
+            </li>
+            <li>
+              <a href="{{ route('approve.restaurant') }}">
+                <span data-key="t-chat">Approve Restaurant </span>
+              </a>
+            </li>
+          </ul>
+        </li>
+        @endif
+
+        @if (Auth::guard('admin')->user()->can('order.menu'))
         <li>
           <a href="javascript: void(0);" class="has-arrow">
             <i class='bx bx-cart'></i>
@@ -84,26 +116,7 @@
 
           </ul>
         </li>
-
-        <li>
-          <a href="javascript: void(0);" class="has-arrow">
-            <i class="bx bx-restaurant"></i>
-            <span data-key="t-apps">Manage Restaurant</span>
-          </a>
-          <ul class="sub-menu" aria-expanded="false">
-            <li>
-              <a href="{{ route('pending.restaurant') }}">
-                <span data-key="t-calendar">Pending Restaurant </span>
-              </a>
-            </li>
-
-            <li>
-              <a href="{{ route('approve.restaurant') }}">
-                <span data-key="t-chat">Approve Restaurant </span>
-              </a>
-            </li>
-          </ul>
-        </li>
+        @endif
 
         <li>
           <a href="javascript: void(0);" class="has-arrow">
@@ -184,8 +197,8 @@
             <span data-key="t-ui-elements">Manage Admin</span>
           </a>
           <ul class="sub-menu" aria-expanded="false">
-          <li><a href="{{ route('all.admin') }}" data-key="t-lightbox">All Admin</a></li>
-          <li><a href="{{ route('add.admin') }}" data-key="t-range-slider">Add Admin</a></li>
+            <li><a href="{{ route('all.admin') }}" data-key="t-lightbox">All Admin</a></li>
+            <li><a href="{{ route('add.admin') }}" data-key="t-range-slider">Add Admin</a></li>
 
           </ul>
         </li>

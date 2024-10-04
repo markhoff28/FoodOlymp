@@ -10,12 +10,13 @@
         <div class="page-title-box d-sm-flex align-items-center justify-content-between">
           <h4 class="mb-sm-0 font-size-18">All Category</h4>
 
+          @if (Auth::guard('admin')->user()->can('category.add'))
           <div class="page-title-right">
             <ol class="breadcrumb m-0">
               <a href="{{ route('add.category') }}" class="btn btn-primary waves-effect waves-light">Add Category</a>
             </ol>
           </div>
-
+          @endif
         </div>
       </div>
     </div>
@@ -45,8 +46,12 @@
                   <td>{{ $item->category_name }}</td>
                   <td><img src="{{ asset($item->category_image) }}" alt="" style="width: 70px; height:40px;"></td>
                   <td>
+                    @if (Auth::guard('admin')->user()->can('category.edit'))
                     <a href="{{ route('edit.category',$item->id) }}" class="btn btn-info waves-effect waves-light">Edit</a>
+                    @endif
+                    @if (Auth::guard('admin')->user()->can('category.delete'))
                     <a href="{{ route('delete.category',$item->id) }}" class="btn btn-danger waves-effect waves-light" id="delete">Delete</a>
+                    @endif
                   </td>
                 </tr>
                 @endforeach

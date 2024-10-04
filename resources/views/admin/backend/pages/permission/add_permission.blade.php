@@ -45,6 +45,10 @@
                         <option value="Order">Order</option>
                         <option value="Reports">Reports</option>
                         <option value="Review">Review</option>
+                        <option value="Role and Permission">Role and Permission</option>
+                        <option value="Content Management User">Content Management User</option>
+                        <option value="Business Intelligence User">Business Intelligence User</option>
+                        <option value="All User">All User</option>
                       </select>
                     </div>
                     <div class="mt-4">
