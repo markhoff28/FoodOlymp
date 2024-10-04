@@ -34,7 +34,7 @@ class AdminUserController extends Controller
         $user->status = '1';
         $user->save();
         if ($request->roles) {
-            $role = Role::where('id', $request->roles)->where('guard_name', 'admin')->first();
+            $role = Role::where('id', $request->roles)->where('guard_name', 'web')->first();
             if ($role) {
                 $user->assignRole($role->name);
             }
@@ -50,8 +50,8 @@ class AdminUserController extends Controller
         $admin = Admin::find($id);
         $roles = Role::all();
         return view('admin.backend.pages.admin.edit_admin',compact('roles','admin'));
-    }
-     //End Method
+    } //End Method
+
      public function UpdateAdmin(Request $request , $id){
         $user = Admin::find($id);
         $user->name = $request->name;
@@ -63,6 +63,7 @@ class AdminUserController extends Controller
         $user->save();
         $user->roles()->detach();
         if ($request->roles) {
+            //$user->assignRole(collect($request->roles)->map(fn($val) => (int)$val));
            $role = Role::where('id',$request->roles)->where('guard_name','admin')->first();
            if ($role) {
             $user->assignRole($role->name);
@@ -73,6 +74,18 @@ class AdminUserController extends Controller
             'alert-type' => 'success'
         ); 
         return redirect()->route('all.admin')->with($notification); 
+    } //End Method
+
+     public function DeleteAdmin($id){
+        $admin = Admin::find($id);
+        if (!is_null($admin )) {
+            $admin->delete();
+        }
+        $notification = array(
+            'message' => 'Admin Deleted Successfully',
+            'alert-type' => 'success'
+        ); 
+        return redirect()->back()->with($notification); 
     }
-     //End Method
+    //End Method
 }

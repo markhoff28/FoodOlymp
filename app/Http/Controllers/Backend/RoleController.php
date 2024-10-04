@@ -24,6 +24,7 @@ class RoleController extends Controller
     {
         Role::create([
             'name' => $request->name,
+            'guard_name' => 'admin',
         ]);
 
         $notification = array(
@@ -45,6 +46,7 @@ class RoleController extends Controller
 
         Role::find($role_id)->update([
             'name' => $request->name,
+            'guard_name' => 'admin',
         ]);
 
         $notification = array(

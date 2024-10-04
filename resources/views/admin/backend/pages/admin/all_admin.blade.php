@@ -42,15 +42,12 @@
                   <td>{{ $item->email }}</td>
                   <td>{{ $item->phone }}</td>
                   <td>
-                    @php
-                    var_dump($item);
-                    @endphp
                     @foreach ($item->roles as $role)
                     <span class="badge badge-pill bg-danger">{{ $role->name }}</span>
                     @endforeach
                   </td>
                   <td><a href="{{ route('edit.admin',$item->id) }}" class="btn btn-info waves-effect waves-light">Edit</a>
-                    <a href="{{ route('delete.category',$item->id) }}" class="btn btn-danger waves-effect waves-light" id="delete">Delete</a>
+                    <a href="{{ route('delete.admin',$item->id) }}" class="btn btn-danger waves-effect waves-light" id="delete">Delete</a>
                   </td>
                 </tr>
                 @endforeach
