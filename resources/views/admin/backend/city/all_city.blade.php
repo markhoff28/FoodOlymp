@@ -10,12 +10,13 @@
         <div class="page-title-box d-sm-flex align-items-center justify-content-between">
           <h4 class="mb-sm-0 font-size-18">All City</h4>
 
+          @if (Auth::guard('admin')->user()->can('city.add'))
           <div class="page-title-right">
             <ol class="breadcrumb m-0">
               <button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#myModal">Add City</button>
             </ol>
           </div>
-
+          @endif
         </div>
       </div>
     </div>
@@ -46,10 +47,12 @@
                   <td>{{ $item->city_slug }}</td>
                   <td>
 
-
+                    @if (Auth::guard('admin')->user()->can('city.edit'))
                     <button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#myEdit" id="{{ $item->id }}" onclick="cityEdit(this.id)">Edit</button>
-
+                    @endif
+                    @if (Auth::guard('admin')->user()->can('city.delete'))
                     <a href="{{ route('delete.city',$item->id) }}" class="btn btn-danger waves-effect waves-light" id="delete">Delete</a>
+                    @endif
                   </td>
                 </tr>
                 @endforeach

@@ -11,12 +11,13 @@
         <div class="page-title-box d-sm-flex align-items-center justify-content-between">
           <h4 class="mb-sm-0 font-size-18">All Banner</h4>
 
+          @if (Auth::guard('admin')->user()->can('banner.add'))
           <div class="page-title-right">
             <ol class="breadcrumb m-0">
               <button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#myModal">Add Banner</button>
             </ol>
           </div>
-
+          @endif
         </div>
       </div>
     </div>
@@ -46,10 +47,12 @@
                   <td><img src="{{ asset($item->banner_image) }}" alt="" style="width: 70px; height:40px;"></td>
                   <td>{{ $item->banner_url }}</td>
                   <td>
-
+                    @if (Auth::guard('admin')->user()->can('banner.edit'))
                     <button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#myEdit" id="{{ $item->id }}" onclick="bannerEdit(this.id)">Edit</button>
-
+                    @endif
+                    @if (Auth::guard('admin')->user()->can('banner.delete'))
                     <a href="{{ route('delete.banner',$item->id) }}" class="btn btn-danger waves-effect waves-light" id="delete">Delete</a>
+                    @endif
                   </td>
                 </tr>
                 @endforeach

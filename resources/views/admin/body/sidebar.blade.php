@@ -118,20 +118,68 @@
         </li>
         @endif
 
+        @if (Auth::guard('admin')->user()->can('city.menu'))
         <li>
           <a href="javascript: void(0);" class="has-arrow">
             <i class='bx bx-location-plus'></i>
             <span>City</span>
           </a>
           <ul class="sub-menu" aria-expanded="false">
+            @if (Auth::guard('admin')->user()->can('city.all'))
             <li>
               <a href="{{ route('all.city') }}">
                 <span>All City</span>
               </a>
             </li>
+            @endif
           </ul>
         </li>
+        @endif
 
+        @if (Auth::guard('admin')->user()->can('review.menu'))
+        <li>
+          <a href="javascript: void(0);" class="has-arrow">
+            <i class="bx bx-edit"></i>
+            <span data-key="t-apps">Manage Review</span>
+          </a>
+          <ul class="sub-menu" aria-expanded="false">
+            @if (Auth::guard('admin')->user()->can('review.pending'))
+            <li>
+              <a href="{{ route('admin.pending.review') }}" data-key="t-lightbox">Pending Review</a>
+            </li>
+            @endif
+            @if (Auth::guard('admin')->user()->can('review.approve'))
+            <li>
+              <a href="{{ route('admin.approve.review') }}" data-key="t-range-slider">Approve Review</a>
+            </li>
+            @endif
+          </ul>
+        </li>
+        @endif
+
+        @if (Auth::guard('admin')->user()->can('business.intelligence.user'))
+        <li class="menu-title mt-2" data-key="t-components">Business Intelligence</li>
+
+        @if (Auth::guard('admin')->user()->can('report.menu'))
+        <li>
+          <a href="javascript: void(0);" class="has-arrow">
+            <i class="bx bx-line-chart"></i>
+            <span data-key="t-apps">Manage Reports</span>
+          </a>
+          <ul class="sub-menu" aria-expanded="false">
+            <li>
+              <a href="{{ route('admin.all.reports') }}" data-key="t-alerts">All Reports</a>
+            </li>
+
+          </ul>
+        </li>
+        @endif
+        @endif
+
+        @if (Auth::guard('admin')->user()->can('content.management.user'))
+        <li class="menu-title mt-2" data-key="t-components">Content Management</li>
+
+        @if (Auth::guard('admin')->user()->can('banner.menu'))
         <li>
           <a href="javascript: void(0);" class="has-arrow">
             <i class="bx bx-image"></i>
@@ -146,37 +194,13 @@
 
           </ul>
         </li>
+        @endif
+        @endif
 
-        <li>
-          <a href="javascript: void(0);" class="has-arrow">
-            <i class="bx bx-line-chart"></i>
-            <span data-key="t-apps">Manage Reports</span>
-          </a>
-          <ul class="sub-menu" aria-expanded="false">
-            <li>
-              <a href="{{ route('admin.all.reports') }}" data-key="t-alerts">All Reports</a>
-            </li>
+        @if (Auth::guard('admin')->user()->can('admin.user.menu'))
+        <li class="menu-title mt-2" data-key="t-components">Administration</li>
 
-          </ul>
-        </li>
-
-        <li>
-          <a href="javascript: void(0);" class="has-arrow">
-            <i class="bx bx-edit"></i>
-            <span data-key="t-apps">Manage Review</span>
-          </a>
-          <ul class="sub-menu" aria-expanded="false">
-            <li>
-              <a href="{{ route('admin.pending.review') }}" data-key="t-lightbox">Pending Review</a>
-            </li>
-            <li>
-              <a href="{{ route('admin.approve.review') }}" data-key="t-range-slider">Approve Review</a>
-            </li>
-          </ul>
-        </li>
-
-        <li class="menu-title mt-2" data-key="t-components">Role & Permission</li>
-
+        @if (Auth::guard('admin')->user()->can('role.permission.menu'))
         <li>
           <a href="javascript: void(0);" class="has-arrow">
             <i class="bx bx-user-check"></i>
@@ -190,7 +214,8 @@
 
           </ul>
         </li>
-
+        @endif
+        @if (Auth::guard('admin')->user()->can('user.management.menu'))
         <li>
           <a href="javascript: void(0);" class="has-arrow">
             <i class="bx bx-user-check"></i>
@@ -202,44 +227,16 @@
 
           </ul>
         </li>
+        @endif
+        @endif
+
+        <li class="menu-title mt-2" data-key="t-components">Additional services</li>
 
         <li>
-          <a href="javascript: void(0);" class="has-arrow">
-            <i data-feather="users"></i>
-            <span data-key="t-authentication">Authentication</span>
+          <a href="javascript: void(0);">
+          <i class="bx bx-support"></i>
+            <span data-key="t-components">Support</span>
           </a>
-          <ul class="sub-menu" aria-expanded="false">
-            <li><a href="auth-login.html" data-key="t-login">Login</a></li>
-            <li><a href="auth-register.html" data-key="t-register">Register</a></li>
-
-          </ul>
-        </li>
-
-
-        <li class="menu-title mt-2" data-key="t-components">Elements</li>
-
-        <li>
-          <a href="javascript: void(0);" class="has-arrow">
-            <i data-feather="briefcase"></i>
-            <span data-key="t-components">Components</span>
-          </a>
-          <ul class="sub-menu" aria-expanded="false">
-            <li><a href="ui-alerts.html" data-key="t-alerts">Alerts</a></li>
-            <li><a href="ui-buttons.html" data-key="t-buttons">Buttons</a></li>
-
-          </ul>
-        </li>
-
-        <li>
-          <a href="javascript: void(0);" class="has-arrow">
-            <i data-feather="gift"></i>
-            <span data-key="t-ui-elements">Extended</span>
-          </a>
-          <ul class="sub-menu" aria-expanded="false">
-            <li><a href="extended-lightbox.html" data-key="t-lightbox">Lightbox</a></li>
-            <li><a href="extended-rangeslider.html" data-key="t-range-slider">Range Slider</a></li>
-
-          </ul>
         </li>
 
 

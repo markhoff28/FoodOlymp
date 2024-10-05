@@ -56,10 +56,12 @@
                   </td>
 
                   <td>
+                    @if (Auth::guard('admin')->user()->can('review.approve'))
                     <div class="form-check-danger form-check form-switch">
                       <input class="form-check-input status-toggle large-checkbox" type="checkbox" id="flexSwitchCheckCheckedDanger" data-id="{{$item->id}}" {{ $item->status ? 'checked' : '' }}>
                       <label class="form-check-label" for="flexSwitchCheckCheckedDanger"> </label>
                     </div>
+                    @endif
                   </td>
                 </tr>
                 @endforeach

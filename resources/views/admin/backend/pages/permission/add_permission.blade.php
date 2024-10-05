@@ -49,6 +49,7 @@
                         <option value="Content Management User">Content Management User</option>
                         <option value="Business Intelligence User">Business Intelligence User</option>
                         <option value="All User">All User</option>
+                        <option value="Admin User">Admin User</option>
                       </select>
                     </div>
                     <div class="mt-4">

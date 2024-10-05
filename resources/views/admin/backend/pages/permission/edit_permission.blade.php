@@ -49,6 +49,7 @@
                         <option value="Content Management User" {{ $permission->group_name == 'Content Management User' ? 'selected' : '' }}>Content Management User</option>
                         <option value="Business Intelligence User"{{ $permission->group_name == 'Business Intelligence User' ? 'selected' : '' }}>Business Intelligence User</option>
                         <option value="All User"{{ $permission->group_name == 'All User' ? 'selected' : '' }}>All User</option>
+                        <option value="Admin User"{{ $permission->group_name == 'Admin User' ? 'selected' : '' }}>Admin User</option>
                       </select>
                     </div>
                     <div class="mt-4">

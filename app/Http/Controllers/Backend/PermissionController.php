@@ -28,6 +28,7 @@ class PermissionController extends Controller
         Permission::create([
             'name' => $request->name,
             'group_name' => $request->group_name,
+            'guard_name' => 'admin',
         ]);
 
         $notification = array(
@@ -50,6 +51,7 @@ class PermissionController extends Controller
         Permission::find($per_id)->update([
             'name' => $request->name,
             'group_name' => $request->group_name,
+            'guard_name' => 'admin',
         ]);
 
         $notification = array(
