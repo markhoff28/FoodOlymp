@@ -13,6 +13,7 @@ use App\Http\Controllers\Backend\AdminUserController;
 use App\Http\Controllers\Backend\BannerController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\CityController;
+use App\Http\Controllers\Backend\NotificationController;
 use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Backend\RestaurantController;
 use App\Http\Controllers\Backend\RolePermissionController;
@@ -161,6 +162,9 @@ Route::middleware('admin')->group(function () {
         Route::get('/admin/approve/review', 'AdminApproveReview')->name('admin.approve.review')->middleware('permission:review.approve');
         Route::get('/reviewchangeStatus', 'ReviewChangeStatus')->middleware('permission:review.menu');
     });
+
+    // Mark notification as read
+    Route::post('/mark-notification-as-read-admin/{notification}', [NotificationController::class, 'MarkAsRead']);
 
     // Permission All Route 
     Route::controller(PermissionController::class)->group(function () {
