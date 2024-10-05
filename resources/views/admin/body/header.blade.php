@@ -163,26 +163,26 @@
 </header>
 
 <script>
-    function markNotificationRead(notificationId){
-        fetch('/mark-notification-as-read-admin/'+notificationId,{
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': '{{ csrf_token() }}'
-            },
-            body: JSON.stringify({})
-        })
-        .then(response => response.json())
-        .then(data => {
-            document.getElementById('notification-count').textContent = data.count;
-            const notificationElement = document.querySelector(`[onclick="markNotificationRead('${notificationId}')"]`);
-            if (notificationElement) {
-                notificationElement.classList.remove('notification-unread');
-                notificationElement.classList.add('notification-read');
-            }
-        })
-        .catch(error => {
-            console.log('Error', error);
-        });
-    }
+  function markNotificationRead(notificationId) {
+    fetch('/mark-notification-as-read-admin/' + notificationId, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRF-TOKEN': '{{ csrf_token() }}'
+        },
+        body: JSON.stringify({})
+      })
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById('notification-count').textContent = data.count;
+        const notificationElement = document.querySelector(`[onclick="markNotificationRead('${notificationId}')"]`);
+        if (notificationElement) {
+          notificationElement.classList.remove('notification-unread');
+          notificationElement.classList.add('notification-read');
+        }
+      })
+      .catch(error => {
+        console.log('Error', error);
+      });
+  }
 </script>
