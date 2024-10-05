@@ -80,7 +80,7 @@
       </div>
       <div class="modal-body">
 
-        <form id="myForm" action="{{ route('city.update') }}" method="post" enctype="multipart/form-data">
+        <form id="myForm" action="{{ route('city.store') }}" method="post" enctype="multipart/form-data">
           @csrf
 
           <div class="row">
@@ -120,7 +120,7 @@
       </div>
       <div class="modal-body">
 
-        <form id="myForm" action="{{ route('city.store') }}" method="post" enctype="multipart/form-data">
+        <form id="myForm" action="{{ route('city.update') }}" method="post" enctype="multipart/form-data">
           @csrf
           <input type="hidden" name="cat_id" id="cat_id">
           <div class="row">
