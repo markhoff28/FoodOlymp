@@ -57,8 +57,8 @@
                     <div class="row">
                       <div class="col-3">
                         <div class="form-check mb-3">
-                          <input class="form-check-input" type="checkbox" id="flexCheckDefault">
-                          <label class="form-check-label" for="flexCheckDefault">
+                          <input class="form-check-input" type="checkbox" id="{{ $group->group_name }}">
+                          <label class="form-check-label" for="{{ $group->group_name }}">
                             {{ $group->group_name }}
                           </label>
                         </div>
@@ -69,8 +69,8 @@
                         @endphp
                         @foreach ($permissions as $permission)
                         <div class="form-check mb-3">
-                          <input class="form-check-input" name="permission[]" value="{{ $permission->id }}" type="checkbox" id="flexCheckDefault{{ $permission->id }}">
-                          <label class="form-check-label" for="flexCheckDefault{{ $permission->id }}">
+                          <input class="form-check-input" name="permission[]" value="{{ $permission->id }}" type="checkbox" id="{{ $permission->id }}">
+                          <label class="form-check-label" for="{{ $permission->id }}">
                             {{ $permission->name }}
                           </label>
                         </div>

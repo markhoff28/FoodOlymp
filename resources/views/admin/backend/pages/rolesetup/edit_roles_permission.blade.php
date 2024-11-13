@@ -52,8 +52,8 @@
                         $permissions = App\Models\Admin::getpermissionByGroupName($group->group_name);
                         @endphp
                         <div class="form-check mb-3">
-                          <input class="form-check-input" value="" type="checkbox" id="flexCheckDefault" {{ App\Models\Admin::roleHasPermissions($role,$permissions) ? 'checked' : '' }}>
-                          <label class="form-check-label" for="flexCheckDefault">
+                          <input class="form-check-input" value="" type="checkbox" id="{{ $group->group_name }}" {{ App\Models\Admin::roleHasPermissions($role,$permissions) ? 'checked' : '' }}>
+                          <label class="form-check-label" for="{{ $group->group_name }}">
                             {{ $group->group_name }}
                           </label>
                         </div>
@@ -62,8 +62,8 @@
 
                         @foreach ($permissions as $permission)
                         <div class="form-check mb-3">
-                          <input class="form-check-input" name="permission[]" value="{{ $permission->id }}" type="checkbox" id="flexCheckDefault{{ $permission->id }}" {{ $role->hasPermissionTo($permission->name) ? 'checked' : '' }}>
-                          <label class="form-check-label" for="flexCheckDefault{{ $permission->id }}">
+                          <input class="form-check-input" name="permission[]" value="{{ $permission->id }}" type="checkbox" id="{{ $permission->id }}" {{ $role->hasPermissionTo($permission->name) ? 'checked' : '' }}>
+                          <label class="form-check-label" for="{{ $permission->id }}">
                             {{ $permission->name }}
                           </label>
                         </div>
