@@ -52,7 +52,6 @@ class BannerController extends Controller
 
     public function BannerUpdate(Request $request)
     {
-
         $banner_id = $request->banner_id;
 
         if ($request->file('image')) {
