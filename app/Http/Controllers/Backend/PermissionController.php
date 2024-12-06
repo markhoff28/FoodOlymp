@@ -85,7 +85,6 @@ class PermissionController extends Controller
 
     public function Import(Request $request)
     {
-
         Excel::import(new PermissionImport, $request->file('import_file'));
 
         $notification = array(

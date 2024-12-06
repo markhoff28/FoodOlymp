@@ -18,7 +18,6 @@ class BannerController extends Controller
 
     public function BannerStore(Request $request)
     {
-
         if ($request->file('image')) {
             $image = $request->file('image');
             $manager = new ImageManager(new Driver());

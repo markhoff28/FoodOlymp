@@ -23,7 +23,6 @@ class CategoryController extends Controller
 
     public function StoreCategory(Request $request)
     {
-
         if ($request->file('image')) {
             $image = $request->file('image');
             $manager = new ImageManager(new Driver());
