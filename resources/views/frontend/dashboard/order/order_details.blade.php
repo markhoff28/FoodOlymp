@@ -9,7 +9,7 @@ $profileData = App\Models\User::find($id);
   <div class="container">
     <div class="row">
 
-      @include('frontend.dashboard.sidebar')
+      @include('frontend.dashboard.body.sidebar')
       <div class="col-md-9">
         <div class="osahan-account-page-right rounded shadow-sm bg-white p-4 h-100">
           <div class="tab-content" id="myTabContent">
