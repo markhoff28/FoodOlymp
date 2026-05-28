@@ -191,7 +191,10 @@ Route::middleware('admin')->group(function () {
 
     // Role and Permissions All Route 
     Route::controller(RolePermissionController::class)->group(function () {
-        Route::get('/all/roles/permission', 'AllRolesPermission')->name('all.roles.permission')->middleware('permission:role.permission.menu');
+        Route::get('/all/roles/permission', 'AllRolesPermission')->name('all.roles.permission')->middleware('Illuminate\Contracts\Container\BindingResolutionException
+vendor\laravel\framework\src\Illuminate\Container\Container.php:1127
+
+Target class [user.management.menu] does not exist. role.permission.menu');
         Route::get('/add/roles/permission', 'AddRolesPermission')->name('add.roles.permission')->middleware('permission:role.permission.menu');
         Route::post('/role/permission/store', 'RolePermissionStore')->name('role.permission.store')->middleware('permission:role.permission.menu');
         Route::get('/admin/edit/roles/{id}', 'AdminEditRoles')->name('admin.edit.roles')->middleware('permission:role.permission.menu');
@@ -201,12 +204,12 @@ Route::middleware('admin')->group(function () {
 
     // Admin User All Route 
     Route::controller(AdminUserController::class)->group(function () {
-        Route::get('/all/admin', 'AllAdmin')->name('all.admin')->middleware('user.management.menu');
-        Route::get('/add/admin', 'AddAdmin')->name('add.admin')->middleware('user.management.menu');
-        Route::post('/store/admin', 'StoreAdmin')->name('store.admin')->middleware('user.management.menu');
-        Route::get('/edit/admin/{id}', 'EditAdmin')->name('edit.admin')->middleware('user.management.menu');
-        Route::post('/update/admin/{id}', 'UpdateAdmin')->name('update.admin')->middleware('user.management.menu');
-        Route::get('/delete/admin/{id}', 'DeleteAdmin')->name('delete.admin')->middleware('user.management.menu');
+        Route::get('/all/admin', 'AllAdmin')->name('all.admin')->middleware('permission:user.management.menu');
+        Route::get('/add/admin', 'AddAdmin')->name('add.admin')->middleware('permission:user.management.menu');
+        Route::post('/store/admin', 'StoreAdmin')->name('store.admin')->middleware('permission:user.management.menu');
+        Route::get('/edit/admin/{id}', 'EditAdmin')->name('edit.admin')->middleware('permission:user.management.menu');
+        Route::post('/update/admin/{id}', 'UpdateAdmin')->name('update.admin')->middleware('permission:user.management.menu');
+        Route::get('/delete/admin/{id}', 'DeleteAdmin')->name('delete.admin')->middleware('permission:user.management.menu');
     });
 });
 // End Admin Group Middleware 
