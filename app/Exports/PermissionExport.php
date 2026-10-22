@@ -2,15 +2,13 @@
 
 namespace App\Exports;
 
-use Spatie\Permission\Models\Permission;
+use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\FromCollection;
+use Spatie\Permission\Models\Permission;
 
 class PermissionExport implements FromCollection
 {
-    /**
-     * @return \Illuminate\Support\Collection
-     */
-    public function collection()
+    public function collection(): Collection
     {
         return Permission::select('name', 'guard_name', 'group_name')->get();
     }
